@@ -15,7 +15,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # A full 49-hour cycle measured 39 min on 2026-07-27 — uncomfortably close to
+    # the old 45 min cap, and multi-region builds (Plan 3) will add to it.
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - name: install wgrib2
