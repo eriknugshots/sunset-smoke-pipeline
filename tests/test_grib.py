@@ -31,5 +31,5 @@ def test_parse_bin_rejects_wrong_marker():
     raw = np.zeros(12, dtype="<f4").tobytes()
     blob = struct.pack("<I", 99) + raw            # wrong Fortran marker
     import pytest
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         parse_bin(blob, 4, 3, 1)
