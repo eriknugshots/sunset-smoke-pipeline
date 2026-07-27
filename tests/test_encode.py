@@ -35,7 +35,7 @@ def test_encode_smk1_header_and_roundtrip():
     terr = np.arange(nx * ny, dtype=np.float32) + 1000.0
     buf = encode_smk1({"west": -122.0, "south": 43.0, "east": -120.0, "north": 45.0},
                       nx, ny, nz, 0.0, 250.0, 4.0, terr, dens)
-    assert buf[:4] == b"SMK1"
+    assert buf[:4] == b"SMK2"   # bumped when density became terrain-following
     w, s, e, n = struct.unpack("<4f", buf[4:20])
     assert (w, s, e, n) == (-122.0, 43.0, -120.0, 45.0)
     rnx, rny, rnz = struct.unpack("<3H", buf[20:26])

@@ -10,14 +10,22 @@ from pipeline.encode import log_encode
 
 
 def resample_columns(mass_kgm3, hgt_m, nz, z_step_m):
-    """Per-column np.interp from hybrid-level heights onto uniform slab centers.
+    """Per-column np.interp from hybrid-level heights onto TERRAIN-FOLLOWING slabs.
 
     mass_kgm3, hgt_m: (nlev, ny, nx) arrays, hgt_m ascending along axis 0
-    (hybrid levels are ordered surface-up by construction). Slab centers are
-    (i + 0.5) * z_step_m for i in [0, nz), matched against hgt_m in absolute
-    meters (MSL) per column — same convention as the rest of the SMK1
-    contract. Columns are zero outside the source level span (np.interp's
-    left/right bounds are passed as 0.0 directly).
+    (hybrid levels are ordered surface-up by construction).
+
+    Slab k of a column covers (k + 0.5) * z_step_m metres ABOVE THAT COLUMN'S
+    GROUND, i.e. targets are `hgt_m[0, y, x] + (k + 0.5) * z_step_m`. Slab 0 is
+    therefore the air a person standing there is breathing.
+
+    This replaced an absolute-MSL grid on 2026-07-27 after a live diagnosis: with
+    MSL slabs every slab below the column's lowest hybrid level was zeroed by
+    np.interp's `left=0.0`, so at Prineville (ground 918 m) the first slab holding
+    any data was 1125 m — 207 m overhead — and at Bend 233 m overhead. The entire
+    near-surface layer was missing everywhere, so a viewer at ground level always
+    sat underneath the data and the smoke could only ever be looked UP at. Slab
+    centres are still uniform, so `zStepM` keeps its meaning; only the datum moves.
     """
     if not np.all(np.diff(hgt_m, axis=0) > 0.0):
         raise ValueError(
@@ -25,19 +33,25 @@ def resample_columns(mass_kgm3, hgt_m, nz, z_step_m):
             "non-ascending or non-finite heights suggest wrong record ordering from the "
             ".idx / wgrib2 -bin output (see Task 8 -bin ambiguity)")
     nlev, ny, nx = mass_kgm3.shape
-    targets = (np.arange(nz) + 0.5) * z_step_m
+    agl = (np.arange(nz) + 0.5) * z_step_m
     out = np.zeros((nz, ny, nx), dtype=np.float64)
     for y in range(ny):
         for x in range(nx):
             col_h = hgt_m[:, y, x]
             col_m = mass_kgm3[:, y, x]
-            v = np.interp(targets, col_h, col_m, left=0.0, right=0.0)
+            # ground-relative targets; right=0.0 still zeroes above the column top,
+            # while left is now unreachable (targets start above col_h[0]).
+            v = np.interp(col_h[0] + agl, col_h, col_m, left=0.0, right=0.0)
             out[:, y, x] = v
     return out
 
 
 def build_tile_arrays(mass_kgm3, hgt_m, nz, z_step_m):
-    """Assemble the terrain (m MSL) and log-encoded density arrays for a tile."""
+    """Assemble the terrain (m MSL) and log-encoded density arrays for a tile.
+
+    Terrain stays absolute (m MSL) — it is what the client anchors the volume to.
+    Density is terrain-following: slab k is (k + 0.5) * z_step_m above terrain.
+    """
     terr = hgt_m[0].astype(np.float32)                       # lowest hybrid level ~ ground
     dens = resample_columns(mass_kgm3, hgt_m, nz, z_step_m)
     dens_u8 = log_encode(dens.reshape(-1) * 1e9)             # (z, y, x) flat == (z*ny + y)*nx + x

@@ -1,7 +1,13 @@
-# pipeline/encode.py — perceptual log curve + SMK1 writer.
-# SMK1 (little-endian): 'SMK1' u32 | bounds WSEN 4xf32 | nx,ny,nz 3xu16 |
+# pipeline/encode.py — perceptual log curve + SMK2 writer.
+# SMK2 (little-endian): 'SMK2' u32 | bounds WSEN 4xf32 | nx,ny,nz 3xu16 |
 # zBottomM,zStepM 2xf32 | densScale f32 | terrain nx*ny f32 (m MSL) |
 # zlib-deflate u8 density, index (z*ny + y)*nx + x, y0 = SOUTH row.
+#
+# SMK2 vs SMK1: identical layout; the DENSITY ALTITUDE DATUM changed from
+# absolute MSL to terrain-following (slab k = (k+0.5)*zStepM above that column's
+# ground — see pipeline/tile.py). The magic was bumped so a client cannot
+# silently render a stale SMK1 tile with SMK2 vertical semantics; terrain stays
+# absolute m MSL in both.
 # Must stay byte-compatible with the app's JS codec (src/smoke.js).
 # Density semantics: app spec §B (authoritative). Curve anchors: 0.2 -> 0, 300 -> 255 µg/m³.
 import struct, zlib
@@ -28,7 +34,7 @@ def encode_smk1(bounds, nx, ny, nz, z_bottom_m, z_step_m, dens_scale, terrain_f3
         raise ValueError(f"terrain size {terrain_f32.size} != {nx * ny}")
     if density_u8.size != nx * ny * nz:
         raise ValueError(f"density size {density_u8.size} != {nx * ny * nz}")
-    head = struct.pack("<I4f3H3f", 0x314B4D53,
+    head = struct.pack("<I4f3H3f", 0x324B4D53,   # 'SMK2' LE
                        bounds["west"], bounds["south"], bounds["east"], bounds["north"],
                        nx, ny, nz, z_bottom_m, z_step_m, dens_scale)
     if len(head) != 38:
