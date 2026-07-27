@@ -104,7 +104,7 @@ def parse_hourly(text, sites):
     return out
 
 
-def fetch_observations(now=None, opener=None, max_lookback=4):
+def fetch_observations(now=None, opener=None, max_lookback=6, min_observations=800):
     """Fetch the sites file and the newest available hourly file, walking back
     hour by hour (up to max_lookback attempts) from `now` (UTC, defaults to
     datetime.now) until one returns 200 -- the current hour usually 404s
@@ -124,6 +124,7 @@ def fetch_observations(now=None, opener=None, max_lookback=4):
     sites = parse_sites(opener(SITES_URL, 60).decode("utf-8", errors="replace"))
 
     last_err = None
+    best_obs, best_hour = [], None
     for back_h in range(max_lookback):
         t = now - datetime.timedelta(hours=back_h)
         url = HOURLY_URL_TMPL.format(t.strftime("%Y%m%d%H"))
@@ -135,8 +136,22 @@ def fetch_observations(now=None, opener=None, max_lookback=4):
         text = raw.decode("utf-8", errors="replace")
         observations = parse_hourly(text, sites)
         iso_hour = t.strftime("%Y-%m-%dT%H:00:00Z")
-        return observations, iso_hour
+        # A file EXISTING is not the same as a file being COMPLETE. AirNow
+        # publishes the hour early and monitors report into it over the following
+        # ~hour, so the newest file is typically a stub. Observed 2026-07-27: the
+        # 21:00 file returned 200 with 13 PM2.5 rows while 20:00 had 1256 — the
+        # pipeline took the stub and shipped a single monitor 250 km from the
+        # viewer, which silently disabled the whole bias correction. Keep walking
+        # back until an hour actually looks populated.
+        if len(observations) >= min_observations:
+            return observations, iso_hour
+        if len(observations) > len(best_obs):
+            best_obs, best_hour = observations, iso_hour
 
+    if best_obs:
+        print(f"::warning::AirNow: no hour with >={min_observations} observations in the "
+              f"last {max_lookback}h; using {best_hour} with {len(best_obs)}")
+        return best_obs, best_hour
     raise RuntimeError(
         f"no AirNow hourly file available in the last {max_lookback} hour(s): {last_err}"
     )

@@ -90,7 +90,10 @@ def test_fetch_observations_walks_back_past_404s():
             return HOURLY_TEXT.encode()
         raise AssertionError(f"unexpected url {url}")
 
-    observations, iso_hour = fetch_observations(now=now, opener=opener, max_lookback=4)
+    # min_observations=1: this test covers walking past 404s, not the completeness
+    # threshold, and its fixture deliberately holds a single row.
+    observations, iso_hour = fetch_observations(now=now, opener=opener, max_lookback=4,
+                                                min_observations=1)
     assert iso_hour == "2026-07-27T17:00:00Z"
     assert len(observations) == 1
     assert observations[0]["name"] == "Prineville - Davidson Park"
@@ -110,3 +113,58 @@ def test_fetch_observations_raises_when_all_attempts_404():
 
     with pytest.raises(RuntimeError):
         fetch_observations(now=now, opener=opener, max_lookback=4)
+
+
+def test_fetch_skips_a_published_but_still_filling_hour():
+    """AirNow publishes an hour early and monitors report into it for ~an hour,
+    so the NEWEST file is typically a near-empty stub. Existing is not the same
+    as being complete: taking the stub shipped a single far-away monitor and
+    silently disabled the bias correction (observed 2026-07-27, 21:00 file had
+    13 rows while 20:00 had 1256)."""
+    sites = "\n".join(
+        ["StationID|AQSID|FullAQSID|Parameter|MonitorType|SiteCode|SiteName|Status|"
+         "AgencyID|AgencyName|EPARegion|Latitude|Longitude"]
+        + [f"1|A{i}|F|PM2.5|Permanent|C|Site{i}|Active|AG|Agency|R10|44.{i:03d}|-121.0"
+           for i in range(300)])
+
+    def rows(n, hh):
+        return "\n".join(f"07/27/26|{hh}:00|A{i}|Site{i}|-8|PM2.5|UG/M3|5.0|Agency"
+                         for i in range(n))
+
+    served = {}
+
+    def opener(url, timeout):
+        if "Monitoring_Site_Locations" in url:
+            return sites.encode()
+        stamp = url.rsplit("_", 1)[1].split(".")[0]
+        served[stamp] = served.get(stamp, 0) + 1
+        hh = stamp[-2:]
+        if hh == "21":
+            return rows(13, hh).encode()       # published but still filling
+        if hh == "20":
+            return rows(250, hh).encode()      # complete
+        raise AssertionError(f"walked back too far: {stamp}")
+
+    now = datetime.datetime(2026, 7, 27, 21, 30, tzinfo=datetime.timezone.utc)
+    obs, hour = fetch_observations(now=now, opener=opener, min_observations=200)
+    assert len(obs) == 250
+    assert hour == "2026-07-27T20:00:00Z"
+
+
+def test_fetch_falls_back_to_the_fullest_hour_when_none_reach_the_threshold():
+    sites = ("StationID|AQSID|FullAQSID|Parameter|MonitorType|SiteCode|SiteName|Status|"
+             "AgencyID|AgencyName|EPARegion|Latitude|Longitude\n"
+             "1|A0|F|PM2.5|Permanent|C|Site0|Active|AG|Agency|R10|44.0|-121.0\n"
+             "1|A1|F|PM2.5|Permanent|C|Site1|Active|AG|Agency|R10|44.1|-121.1")
+
+    def opener(url, timeout):
+        if "Monitoring_Site_Locations" in url:
+            return sites.encode()
+        hh = url.rsplit("_", 1)[1].split(".")[0][-2:]
+        n = 2 if hh == "19" else 1             # 19:00 is the fullest available
+        return "\n".join(f"07/27/26|{hh}:00|A{i}|Site{i}|-8|PM2.5|UG/M3|5.0|Agency"
+                         for i in range(n)).encode()
+
+    now = datetime.datetime(2026, 7, 27, 21, 30, tzinfo=datetime.timezone.utc)
+    obs, hour = fetch_observations(now=now, opener=opener, max_lookback=3, min_observations=200)
+    assert len(obs) == 2 and hour == "2026-07-27T19:00:00Z"
