@@ -16,9 +16,14 @@ def resample_columns(mass_kgm3, hgt_m, nz, z_step_m):
     (hybrid levels are ordered surface-up by construction). Slab centers are
     (i + 0.5) * z_step_m for i in [0, nz), matched against hgt_m in absolute
     meters (MSL) per column — same convention as the rest of the SMK1
-    contract. Columns are constant outside the source level span (np.interp
-    left/right), which we then zero out below.
+    contract. Columns are zero outside the source level span (np.interp's
+    left/right bounds are passed as 0.0 directly).
     """
+    if not np.all(np.diff(hgt_m, axis=0) > 0.0):
+        raise ValueError(
+            "hgt_m must be strictly ascending along axis 0 (hybrid levels surface-up); "
+            "non-ascending or non-finite heights suggest wrong record ordering from the "
+            ".idx / wgrib2 -bin output (see Task 8 -bin ambiguity)")
     nlev, ny, nx = mass_kgm3.shape
     targets = (np.arange(nz) + 0.5) * z_step_m
     out = np.zeros((nz, ny, nx), dtype=np.float64)

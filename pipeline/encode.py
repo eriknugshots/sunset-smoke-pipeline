@@ -31,7 +31,8 @@ def encode_smk1(bounds, nx, ny, nz, z_bottom_m, z_step_m, dens_scale, terrain_f3
     head = struct.pack("<I4f3H3f", 0x314B4D53,
                        bounds["west"], bounds["south"], bounds["east"], bounds["north"],
                        nx, ny, nz, z_bottom_m, z_step_m, dens_scale)
-    assert len(head) == 38, f"header is {len(head)} bytes, expected 38 (padding leak?)"
+    if len(head) != 38:
+        raise ValueError(f"header is {len(head)} bytes, expected 38 (padding leak?)")
     terr = terrain_f32.tobytes()
     dens = zlib.compress(density_u8.tobytes(), 6)
     return head + terr + dens

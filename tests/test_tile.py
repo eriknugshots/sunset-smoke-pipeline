@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 from pipeline.tile import resample_columns, build_tile_arrays
 
 
@@ -20,6 +21,20 @@ def test_resample_zero_above_top_and_below_bottom():
     dens = resample_columns(mass, hgt, nz=8, z_step_m=250.0)
     assert dens[0, 0, 0] == 0.0           # 125 m: below the lowest level -> 0
     assert dens[7, 0, 0] == 0.0           # 1875 m: above the top level -> 0
+
+
+def test_resample_raises_on_non_ascending_hgt():
+    hgt = np.array([[[1000.0]], [[500.0]]])   # descending -> would silently interp to 0
+    mass = np.array([[[3e-9]], [[3e-9]]])
+    with pytest.raises(ValueError):
+        resample_columns(mass, hgt, nz=8, z_step_m=250.0)
+
+
+def test_resample_raises_on_nan_hgt():
+    hgt = np.array([[[100.0]], [[np.nan]], [[3000.0]]])
+    mass = np.array([[[5e-9]], [[1e-9]], [[0.0]]])
+    with pytest.raises(ValueError):
+        resample_columns(mass, hgt, nz=8, z_step_m=250.0)
 
 
 def test_build_tile_arrays_shapes_and_terrain():
