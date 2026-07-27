@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from pipeline.idx import parse_idx, select_records, byte_ranges
 
 FIX = Path(__file__).parent / "fixtures"
@@ -47,6 +49,25 @@ def test_select_massden_hybrid_excludes_8m_above_ground():
     assert len(sel) == 50
 
 
-def test_parse_idx_lenient_skips_garbage_line():
-    recs = parse_idx("1:0:d=x:VAR:lvl:f:\ngarbage line\n")
+def test_parse_idx_lenient_skips_garbage_line(capsys):
+    # "1:X:..." has >=6 colon-separated fields but a non-numeric offset, so it
+    # reaches the int() conversion and must be skipped there (not filtered out
+    # by the earlier <6-parts guard, which "garbage line" alone would hit).
+    recs = parse_idx("1:0:d=x:VAR:lvl:f:\n1:X:d=x:VAR2:lvl:f:\n")
     assert len(recs) == 1
+    out = capsys.readouterr().out
+    assert "skipped 1" in out
+
+    # The old zero-colon case: filtered out before int() is ever reached.
+    recs2 = parse_idx("1:0:d=x:VAR:lvl:f:\ngarbage line\n")
+    assert len(recs2) == 1
+
+
+def test_byte_ranges_raises_on_duplicate_offsets():
+    recs = [
+        {"n": 1, "offset": 0, "var": "A", "level": "1"},
+        {"n": 2, "offset": 100, "var": "B", "level": "1"},
+        {"n": 3, "offset": 100, "var": "C", "level": "1"},
+    ]
+    with pytest.raises(ValueError, match="duplicate"):
+        byte_ranges(recs, recs)
