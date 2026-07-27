@@ -20,14 +20,22 @@ jobs:
       - uses: actions/checkout@v4
       - name: install wgrib2
         run: |
+          # Ubuntu 24.04 has no apt wgrib2 package (verified: first real run, 2026-07-27) —
+          # conda-forge is the working path; keep the apt attempt in case future images add it.
           sudo apt-get update -qq
-          sudo apt-get install -y wgrib2 || {
-            echo "apt wgrib2 unavailable; using conda-forge";
-            wget -qO mm https://micro.mamba.pm/api/micromamba/linux-64/latest && tar -xj -f mm bin/micromamba || true
-            "${GITHUB_WORKSPACE}/bin/micromamba" create -y -p /tmp/wg -c conda-forge wgrib2
+          if sudo apt-get install -y wgrib2 2>/dev/null; then
+            echo "wgrib2 from apt"
+          else
+            echo "apt wgrib2 unavailable; using conda-forge"
+            wget -qO mm https://micro.mamba.pm/api/micromamba/linux-64/latest
+            tar -xj -f mm bin/micromamba
+            ./bin/micromamba create -y -p /tmp/wg -c conda-forge wgrib2
+            # GITHUB_PATH only applies to LATER steps; export for this step's verification too
             echo "/tmp/wg/bin" >> "$GITHUB_PATH"
-          }
-          wgrib2 -version
+            export PATH="/tmp/wg/bin:$PATH"
+          fi
+          command -v wgrib2
+          wgrib2 -version || true   # some builds exit non-zero on -version; command -v above is the real check
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
