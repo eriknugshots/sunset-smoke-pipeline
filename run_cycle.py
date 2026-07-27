@@ -30,7 +30,7 @@ def latest_synoptic(model, now=None):
         try:
             http(url, timeout=30)
             return t
-        except urllib.error.HTTPError:
+        except urllib.error.URLError:   # HTTPError is a URLError subclass — covers both
             continue
     sys.exit("no available synoptic cycle found")
 
@@ -59,10 +59,14 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
     if len(sel_m) < model["hybridLevels"] or len(sel_h) < model["hybridLevels"]:
         raise RuntimeError(f"f{fhr:02d}: incomplete records ({len(sel_m)} massden, {len(sel_h)} hgt)")
     gp, bp = work / f"f{fhr:02d}.grib2", work / f"f{fhr:02d}.bin"
-    grib.fetch_ranges(nat_url, idxmod.byte_ranges(sel_m + sel_h, recs), gp)
-    grib.regrid_to_bin(gp, grid, f"^({model['massdenVar']}|{model['hgtVar']}):", bp)
-    n = model["hybridLevels"]
-    fields = grib.parse_bin(bp.read_bytes(), region["nx"], region["ny"], 2 * n)
+    try:
+        grib.fetch_ranges(nat_url, idxmod.byte_ranges(sel_m + sel_h, recs), gp)
+        grib.regrid_to_bin(gp, grid, f"^({model['massdenVar']}|{model['hgtVar']}):", bp)
+        n = model["hybridLevels"]
+        fields = grib.parse_bin(bp.read_bytes(), region["nx"], region["ny"], 2 * n)
+    finally:
+        gp.unlink(missing_ok=True)
+        bp.unlink(missing_ok=True)
     # wgrib2 preserves input record order: our ranges were massden levels 1..n then hgt 1..n.
     # VERIFY in Task 8 with -s inventory; if wgrib2 reorders, split into two -match passes.
     mass, hgt = fields[:n], fields[n:]
@@ -71,17 +75,20 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
         encode_smk1(grid["bounds"], region["nx"], region["ny"], region["nz"],
                     0.0, float(region["zStepM"]), 4.0, terr, dens))
     # HPBL sidecar (captured per spec §A.1; unused by client v1)
+    sgp, sbp = work / f"sfc{fhr:02d}.grib2", work / f"sfc{fhr:02d}.bin"
     try:
         sfc_url = tile_url(model, cyc, fhr, "sfcPath")
         srecs = idxmod.parse_idx(http(sfc_url + ".idx").decode())
         sel_p = idxmod.select_records(srecs, model["hpblVar"], "surface", 1)
-        sgp, sbp = work / f"sfc{fhr:02d}.grib2", work / f"sfc{fhr:02d}.bin"
         grib.fetch_ranges(sfc_url, idxmod.byte_ranges(sel_p, srecs), sgp)
         grib.regrid_to_bin(sgp, grid, f"^{model['hpblVar']}:", sbp)
         hp = grib.parse_bin(sbp.read_bytes(), region["nx"], region["ny"], 1)[0]
         (out_dir / f"hpbl_f{fhr:02d}.bin").write_bytes(zlib.compress(hp.astype("<f4").tobytes(), 6))
     except Exception as e:
         print(f"::warning::HPBL f{fhr:02d} skipped: {e}")
+    finally:
+        sgp.unlink(missing_ok=True)
+        sbp.unlink(missing_ok=True)
 
 def main():
     ap = argparse.ArgumentParser()
@@ -94,16 +101,29 @@ def main():
     cyc = latest_synoptic(model)
     cyc_iso = cyc.strftime("%Y-%m-%dT%H:00:00Z")
     cid = sitemod.cycle_id(cyc_iso)
+    expected_hours = model["synopticHorizon"] + 1
     prev = None
     if args.pages_base:
         try:
             prev = json.loads(http(args.pages_base.rstrip("/") + "/manifest.json", timeout=30))
-            if any(r.get("cycleId") == cid for r in prev.get("regions", [])) and args.hours is None:
-                print(f"cycle {cid} already published — nothing to do")
-                return
+            if args.hours is None:
+                prev_by_id = {r.get("id"): r for r in prev.get("regions", [])}
+                # Only skip when every region is BOTH on this cycle AND complete
+                # (hours >= full horizon). HRRR uploads a cycle progressively (f48
+                # lands ~1.5-2h after cycle time), so a run that starts mid-upload
+                # must NOT freeze the tail hours until the next synoptic cycle —
+                # an incomplete published cycle gets rebuilt and topped up instead.
+                complete = all(
+                    prev_by_id.get(region["id"], {}).get("cycleId") == cid
+                    and prev_by_id.get(region["id"], {}).get("hours", 0) >= expected_hours
+                    for region in REGIONS
+                )
+                if complete:
+                    print(f"cycle {cid} already published complete — nothing to do")
+                    return
         except Exception:
             prev = None
-    hours = args.hours or (model["synopticHorizon"] + 1)
+    hours = args.hours if args.hours is not None else expected_hours
     site_dir = Path(args.site_dir); work = ROOT / "work"
     site_dir.mkdir(parents=True, exist_ok=True); work.mkdir(exist_ok=True)
     regions_out = []
@@ -111,15 +131,19 @@ def main():
         grid = grib.region_grid_args(region)
         out_dir = site_dir / "tiles" / region["id"] / cid
         out_dir.mkdir(parents=True, exist_ok=True)
-        done = 0
+        max_ok = -1
         for fhr in range(hours):
             try:
                 process_hour(model, region, grid, cyc, fhr, out_dir, work)
-                done += 1
+                max_ok = fhr
                 print(f"{region['id']} f{fhr:02d} ok")
             except Exception as e:
                 print(f"::warning::{region['id']} f{fhr:02d} failed: {e}")
-        regions_out.append({"id": region["id"], "bounds": grid["bounds"], "cycle": cyc_iso, "hours": done})
+        # hours is the fetch EXTENT (highest successful fhr + 1), not a count of
+        # successes: the client tolerates interior gaps by design, so a failure
+        # at e.g. f03 must not truncate the manifest before the later f48 that
+        # actually built successfully.
+        regions_out.append({"id": region["id"], "bounds": grid["bounds"], "cycle": cyc_iso, "hours": max_ok + 1})
     # carryover previous cycle files
     for p in sitemod.plan_carryover(prev, cid):
         dst = site_dir / p["path"]; dst.mkdir(parents=True, exist_ok=True)
