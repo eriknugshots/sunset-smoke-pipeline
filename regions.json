@@ -1,0 +1,6 @@
+{
+  "regions": [
+    { "id": "central-oregon", "centerLat": 44.06, "centerLon": -121.32, "widthKm": 480,
+      "nx": 160, "ny": 160, "nz": 40, "zStepM": 250 }
+  ]
+}
