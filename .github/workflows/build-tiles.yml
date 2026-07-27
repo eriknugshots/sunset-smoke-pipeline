@@ -1,0 +1,48 @@
+name: build-tiles
+on:
+  schedule:
+    - cron: "23 * * * *"      # hourly; run_cycle exits fast unless a new synoptic cycle exists
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: "limit forecast hours (testing)"
+        required: false
+permissions:
+  contents: write
+concurrency:
+  group: build-tiles
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: install wgrib2
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y wgrib2 || {
+            echo "apt wgrib2 unavailable; using conda-forge";
+            wget -qO mm https://micro.mamba.pm/api/micromamba/linux-64/latest && tar -xj -f mm bin/micromamba || true
+            "${GITHUB_WORKSPACE}/bin/micromamba" create -y -p /tmp/wg -c conda-forge wgrib2
+            echo "/tmp/wg/bin" >> "$GITHUB_PATH"
+          }
+          wgrib2 -version
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: build cycle
+        run: |
+          PAGES_BASE="https://$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f1).github.io/$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f2)"
+          python run_cycle.py --site-dir site --pages-base "$PAGES_BASE" \
+            ${{ inputs.hours && format('--hours {0}', inputs.hours) || '' }}
+      - name: publish (orphan force-push to gh-pages)
+        run: |
+          if [ ! -f site/manifest.json ]; then echo "nothing built"; exit 0; fi
+          cd site
+          git init -b gh-pages -q
+          git -c user.name=pipeline -c user.email=pipeline@users.noreply.github.com add -A
+          git -c user.name=pipeline -c user.email=pipeline@users.noreply.github.com commit -q -m "cycle $(date -u +%Y%m%dT%H%MZ)"
+          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
