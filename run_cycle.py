@@ -61,7 +61,7 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
     gp, bp = work / f"f{fhr:02d}.grib2", work / f"f{fhr:02d}.bin"
     try:
         grib.fetch_ranges(nat_url, idxmod.byte_ranges(sel_m + sel_h, recs), gp)
-        grib.regrid_to_bin(gp, grid, f"^({model['massdenVar']}|{model['hgtVar']}):", bp)
+        grib.regrid_to_bin(gp, grid, f":({model['massdenVar']}|{model['hgtVar']}):", bp)
         n = model["hybridLevels"]
         fields = grib.parse_bin(bp.read_bytes(), region["nx"], region["ny"], 2 * n)
     finally:
@@ -81,7 +81,7 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
         srecs = idxmod.parse_idx(http(sfc_url + ".idx").decode())
         sel_p = idxmod.select_records(srecs, model["hpblVar"], "surface", 1)
         grib.fetch_ranges(sfc_url, idxmod.byte_ranges(sel_p, srecs), sgp)
-        grib.regrid_to_bin(sgp, grid, f"^{model['hpblVar']}:", sbp)
+        grib.regrid_to_bin(sgp, grid, f":{model['hpblVar']}:", sbp)
         hp = grib.parse_bin(sbp.read_bytes(), region["nx"], region["ny"], 1)[0]
         (out_dir / f"hpbl_f{fhr:02d}.bin").write_bytes(zlib.compress(hp.astype("<f4").tobytes(), 6))
     except Exception as e:
