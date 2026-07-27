@@ -1,6 +1,7 @@
 # pipeline/grib.py — byte-range download, wgrib2 regrid to the region grid,
 # and parsing of wgrib2 -bin output (f32 fields with Fortran record markers).
 import struct, subprocess, time, urllib.request
+from pathlib import Path
 import numpy as np
 
 
@@ -47,21 +48,32 @@ def fetch_ranges(url, ranges, out_path):
 
 
 def regrid_to_bin(grib_path, grid, match_regex, bin_path):
-    """wgrib2: select records by -match, regrid to regular latlon, dump -bin (native LE floats)."""
-    cmd = ["wgrib2", str(grib_path), "-match", match_regex,
-           "-new_grid_winds", "earth", "-new_grid", "latlon",
-           grid["lon"], grid["lat"], "/dev/null", "-bin", str(bin_path)]
-    # NOTE: wgrib2 option semantics need real-data verification (Task 8): the intent is
-    # "regrid the matched records, discard the regridded grib output, dump the regridded
-    # fields as -bin". If -bin captures the SOURCE grid instead of the regridded one on
-    # the installed wgrib2 build, switch to the two-step form:
-    #   wgrib2 in.grib2 -match RE -new_grid_winds earth -new_grid latlon LON LAT tmp.grib2
-    #   wgrib2 tmp.grib2 -bin out.bin
-    # Keep this comment until Task 8 confirms which form is correct.
+    """wgrib2 two-step: (1) regrid matched records to the regular latlon region grid into a
+    temp grib2, (2) dump that REGRIDDED file's fields as -bin (f32, Fortran record markers).
+
+    Two-step is REQUIRED (settled by the first real CI run, 2026-07-27, wgrib2 3.8.0
+    conda-forge): the one-step chain `-new_grid ... /dev/null -bin out` wrote a 0-byte bin,
+    because -bin dumps records read from the INPUT file while -new_grid writes regridded
+    records only to its own output file — chaining captures nothing. Record order in the
+    regridded temp file is the input-file order of matched records (wgrib2 processes
+    sequentially), i.e. exactly the order fetch_ranges wrote the ranges.
+    """
+    tmp = Path(str(bin_path) + ".regrid.grib2")
+    steps = (
+        ["wgrib2", str(grib_path), "-match", match_regex,
+         "-new_grid_winds", "earth", "-new_grid", "latlon",
+         grid["lon"], grid["lat"], str(tmp)],
+        ["wgrib2", str(tmp), "-bin", str(bin_path)],
+    )
     try:
-        subprocess.run(cmd, check=True, capture_output=True, timeout=300)
+        for cmd in steps:
+            subprocess.run(cmd, check=True, capture_output=True, timeout=300)
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"wgrib2 failed: {e.stderr.decode(errors='replace')[:500]}") from e
+    finally:
+        tmp.unlink(missing_ok=True)
+    if Path(bin_path).stat().st_size == 0:
+        raise RuntimeError(f"wgrib2 -bin produced an empty file for {match_regex} on {grib_path}")
 
 
 def parse_bin(blob, nx, ny, nfields):
