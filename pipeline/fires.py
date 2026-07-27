@@ -89,18 +89,20 @@ def cluster_fires(fires, merge_km=300.0):
     return clusters
 
 
-def rank_clusters(clusters, limit=6, min_separation_km=0.0):
+def rank_clusters(clusters, limit=6, min_separation_km=500.0):
     """Heaviest-first selection, with an optional minimum separation between accepted
     cluster centres. Each cluster becomes a 960 km wide fire box, so centres closer
     than roughly half that (~500 km) already overlap more than 50% -- wasting a
     pre-warm slot on redundant coverage of the same area instead of a distinct one.
+    Defaults to 500.0 so a bare call gets this designed behaviour; pass 0.0 to
+    recover the original top-N-by-weight-only selection.
 
     Walks the weight-sorted list and accepts a cluster only if it is at least
     `min_separation_km` from every already-accepted cluster, continuing down the
     list until `limit` slots are filled: a rejected near-duplicate frees its slot
     for the next sufficiently-distant cluster rather than shrinking the result.
-    `min_separation_km=0.0` (the default) disables the filter and reproduces the
-    original top-N-by-weight behaviour exactly.
+    `min_separation_km=0.0` disables the filter and reproduces the original
+    top-N-by-weight behaviour exactly.
     """
     ordered = sorted(clusters, key=lambda c: c["weight"], reverse=True)
     if min_separation_km <= 0:
