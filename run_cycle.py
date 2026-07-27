@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build SMK1 tiles for the latest synoptic HRRR cycle. See README.
 Usage: run_cycle.py --site-dir site [--hours N] [--pages-base URL]"""
-import argparse, datetime, json, re, sys, urllib.error, urllib.request
+import argparse, concurrent.futures as cf, datetime, json, os, re, sys, urllib.error, urllib.request
 from pathlib import Path
 import numpy as np
 from pipeline import idx as idxmod, grib, site as sitemod, observations as obsmod
@@ -74,7 +74,12 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
     (out_dir / f"f{fhr:02d}.smk1").write_bytes(
         encode_smk1(grid["bounds"], region["nx"], region["ny"], region["nz"],
                     0.0, float(region["zStepM"]), 4.0, terr, dens))
-    # HPBL sidecar (captured per spec §A.1; unused by client v1)
+    # HPBL sidecar (captured per spec §A.1; unused by client v1). It costs a
+    # SECOND .idx fetch, byte-range download and wgrib2 pass per forecast hour —
+    # a large slice of the cycle's runtime for a field nothing reads yet, so it is
+    # opt-in via model-config "captureHpbl".
+    if not CFG.get("captureHpbl"):
+        return
     sgp, sbp = work / f"sfc{fhr:02d}.grib2", work / f"sfc{fhr:02d}.bin"
     try:
         sfc_url = tile_url(model, cyc, fhr, "sfcPath")
@@ -161,13 +166,25 @@ def main():
         out_dir = site_dir / "tiles" / region["id"] / cid
         out_dir.mkdir(parents=True, exist_ok=True)
         max_ok = -1
-        for fhr in range(hours):
-            try:
-                process_hour(model, region, grid, cyc, fhr, out_dir, work)
-                max_ok = fhr
-                print(f"{region['id']} f{fhr:02d} ok")
-            except Exception as e:
-                print(f"::warning::{region['id']} f{fhr:02d} failed: {e}")
+        # Forecast hours are independent, and the cycle is dominated by ~30 MB of
+        # byte-range download per hour — pure I/O wait. Running them concurrently
+        # turns a serial ~40 min cycle into roughly the slowest few hours. Threads
+        # (not processes) are right here: urllib blocks on the socket, wgrib2 is a
+        # subprocess, and numpy releases the GIL, so all three overlap.
+        workers = max(1, int(os.environ.get("CYCLE_WORKERS", "6")))
+        results = {}
+        with cf.ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = {pool.submit(process_hour, model, region, grid, cyc, f, out_dir, work): f
+                       for f in range(hours)}
+            for fut in cf.as_completed(futures):
+                fhr = futures[fut]
+                try:
+                    fut.result()
+                    results[fhr] = True
+                    print(f"{region['id']} f{fhr:02d} ok")
+                except Exception as e:
+                    print(f"::warning::{region['id']} f{fhr:02d} failed: {e}")
+        max_ok = max([f for f, ok in results.items() if ok], default=-1)
         # hours is the fetch EXTENT (highest successful fhr + 1), not a count of
         # successes: the client tolerates interior gaps by design, so a failure
         # at e.g. f03 must not truncate the manifest before the later f48 that

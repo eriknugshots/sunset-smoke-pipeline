@@ -34,7 +34,11 @@ def test_manifest_hours_is_extent_not_count(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["run_cycle.py", "--site-dir", str(site_dir), "--hours", "3"])
     run_cycle.main()
 
-    assert calls == [0, 1, 2]
+    # Every hour must be attempted, but NOT in a particular order: forecast hours
+    # are independent and now build concurrently, so completion order varies run
+    # to run. Asserting the exact sequence pinned the old serial implementation
+    # and went flaky the moment it was parallelised.
+    assert sorted(calls) == [0, 1, 2]
     manifest = json.loads((site_dir / "manifest.json").read_text())
     region = manifest["regions"][0]
     assert region["hours"] == 3

@@ -42,6 +42,12 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
       - name: build cycle
+        env:
+          # Without this Python buffers stdout when it is not a TTY, so a run that
+          # is cancelled or times out discards ALL its progress output — the
+          # 2026-07-27 timeout logged zero forecast hours despite running 45 min,
+          # leaving no way to tell how far it had actually got.
+          PYTHONUNBUFFERED: "1"
         run: |
           PAGES_BASE="https://$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f1).github.io/$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f2)"
           python run_cycle.py --site-dir site --pages-base "$PAGES_BASE" \

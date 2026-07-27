@@ -5,19 +5,34 @@
       "bucket": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com",
       "natPath": "hrrr.{ymd}/conus/hrrr.t{hh}z.wrfnatf{fff:02d}.grib2",
       "sfcPath": "hrrr.{ymd}/conus/hrrr.t{hh}z.wrfsfcf{fff:02d}.grib2",
-      "massdenVar": "MASSDEN", "hgtVar": "HGT", "hpblVar": "HPBL",
+      "massdenVar": "MASSDEN",
+      "hgtVar": "HGT",
+      "hpblVar": "HPBL",
       "hybridLevels": 30,
-      "synopticCycles": [0, 6, 12, 18],
+      "synopticCycles": [
+        0,
+        6,
+        12,
+        18
+      ],
       "synopticHorizon": 48
     },
     "rrfs": {
       "bucket": "https://noaa-rrfs-pds.s3.amazonaws.com",
-      "comment": "canary only until RRFS-SD is operational — verify real paths/vars at cutover (SCN 26-48)",
+      "comment": "canary only until RRFS-SD is operational \u2014 verify real paths/vars at cutover (SCN 26-48)",
       "natPath": "rrfs_a/rrfs_a.{ymd}/{hh}/rrfs.t{hh}z.natlev.f{fff:03d}.grib2",
-      "massdenVar": "MASSDEN", "hgtVar": "HGT", "hpblVar": "HPBL",
+      "massdenVar": "MASSDEN",
+      "hgtVar": "HGT",
+      "hpblVar": "HPBL",
       "hybridLevels": 30,
-      "synopticCycles": [0, 6, 12, 18],
+      "synopticCycles": [
+        0,
+        6,
+        12,
+        18
+      ],
       "synopticHorizon": 60
     }
-  }
+  },
+  "captureHpbl": false
 }
