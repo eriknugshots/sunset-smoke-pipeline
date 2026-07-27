@@ -31,3 +31,22 @@ def test_byte_ranges_end_exclusive_and_last_open():
     assert rngs[0][1] > rngs[0][0]          # (start, end) with end = next record offset
     last_rec = max(recs, key=lambda r: r["offset"])
     assert byte_ranges([last_rec], recs)[0][1] is None
+
+
+def test_select_massden_hybrid_excludes_8m_above_ground():
+    # Truth check: "MASSDEN:8 m above ground" is present in BOTH fixtures
+    # (wrfnat.idx line 1046, wrfsfc.idx line 76). wrfnat.idx is the one that
+    # also carries the 50 real hybrid-level MASSDEN records, so it's the
+    # meaningful fixture for proving the near-surface record gets excluded
+    # from among them.
+    text = (FIX / "wrfnat.idx").read_text()
+    assert "MASSDEN:8 m above ground" in text
+    recs = parse_idx(text)
+    sel = select_records(recs, "MASSDEN", "hybrid level", 999)
+    assert all(r["level"] != "8 m above ground" for r in sel)
+    assert len(sel) == 50
+
+
+def test_parse_idx_lenient_skips_garbage_line():
+    recs = parse_idx("1:0:d=x:VAR:lvl:f:\ngarbage line\n")
+    assert len(recs) == 1
