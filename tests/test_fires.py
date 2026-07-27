@@ -49,3 +49,17 @@ def test_region_id_is_stable_under_small_drift():
     assert region_id_for(44.62, -120.05) == region_id_for(44.71, -120.11)
     assert region_id_for(44.62, -120.05) == "fire-45n120w"
     assert region_id_for(44.62, -120.05) != region_id_for(41.47, -102.16)
+
+def test_rank_clusters_separation_skips_near_duplicate_and_promotes_next():
+    # All on the same meridian so haversine reduces to R * radians(dlat) exactly.
+    c1 = {"lat": 40.0, "lon": -120.0, "weight": 1_000_000.0}
+    c2 = {"lat": 41.79966, "lon": -120.0, "weight": 500_000.0}   # ~200 km from c1
+    c3 = {"lat": 48.0958, "lon": -120.0, "weight": 100_000.0}    # ~900 km from c1
+    ranked = rank_clusters([c1, c2, c3], limit=6, min_separation_km=500.0)
+    assert ranked == [c1, c3]   # c2 is a near-duplicate of c1 and is skipped;
+                                 # c3 is far enough and gets promoted into the freed slot
+
+def test_rank_clusters_zero_separation_matches_original_behaviour():
+    fires = parse_fires(PAYLOAD)
+    clusters = cluster_fires(fires, merge_km=300.0)
+    assert rank_clusters(clusters, limit=6, min_separation_km=0.0) == rank_clusters(clusters, limit=6)

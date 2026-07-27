@@ -89,8 +89,30 @@ def cluster_fires(fires, merge_km=300.0):
     return clusters
 
 
-def rank_clusters(clusters, limit=6):
-    return sorted(clusters, key=lambda c: c["weight"], reverse=True)[:limit]
+def rank_clusters(clusters, limit=6, min_separation_km=0.0):
+    """Heaviest-first selection, with an optional minimum separation between accepted
+    cluster centres. Each cluster becomes a 960 km wide fire box, so centres closer
+    than roughly half that (~500 km) already overlap more than 50% -- wasting a
+    pre-warm slot on redundant coverage of the same area instead of a distinct one.
+
+    Walks the weight-sorted list and accepts a cluster only if it is at least
+    `min_separation_km` from every already-accepted cluster, continuing down the
+    list until `limit` slots are filled: a rejected near-duplicate frees its slot
+    for the next sufficiently-distant cluster rather than shrinking the result.
+    `min_separation_km=0.0` (the default) disables the filter and reproduces the
+    original top-N-by-weight behaviour exactly.
+    """
+    ordered = sorted(clusters, key=lambda c: c["weight"], reverse=True)
+    if min_separation_km <= 0:
+        return ordered[:limit]
+    accepted = []
+    for c in ordered:
+        if len(accepted) >= limit:
+            break
+        if all(haversine_km(c["lat"], c["lon"], a["lat"], a["lon"]) >= min_separation_km
+               for a in accepted):
+            accepted.append(c)
+    return accepted
 
 
 def region_id_for(lat, lon):
