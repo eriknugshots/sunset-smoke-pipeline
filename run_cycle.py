@@ -4,7 +4,7 @@ Usage: run_cycle.py --site-dir site [--hours N] [--pages-base URL]"""
 import argparse, datetime, json, re, sys, urllib.error, urllib.request
 from pathlib import Path
 import numpy as np
-from pipeline import idx as idxmod, grib, site as sitemod
+from pipeline import idx as idxmod, grib, site as sitemod, observations as obsmod
 from pipeline.encode import encode_smk1
 from pipeline.tile import build_tile_arrays
 import zlib
@@ -90,6 +90,35 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
         sgp.unlink(missing_ok=True)
         sbp.unlink(missing_ok=True)
 
+def write_observations(site_dir, regions_out):
+    """Fetch EPA AirNow ground-truth PM2.5 observations for the union of all
+    built region bounds and write site_dir/obs.json. Never raises -- a fetch
+    failure must not fail the whole cycle, so it's logged as a GitHub Actions
+    warning and a well-formed (empty) obs.json is written instead, so the
+    client always has something to fetch."""
+    try:
+        bounds = [r["bounds"] for r in regions_out]
+        union = {
+            "west": min(b["west"] for b in bounds),
+            "south": min(b["south"] for b in bounds),
+            "east": max(b["east"] for b in bounds),
+            "north": max(b["north"] for b in bounds),
+        }
+        obs, obs_hour = obsmod.fetch_observations(opener=http)
+        in_bounds = obsmod.observations_in_bounds(obs, union)
+        payload = {
+            "hour": obs_hour,
+            "observations": [
+                {"name": o["name"], "lat": round(o["lat"], 4), "lon": round(o["lon"], 4),
+                 "ugm3": round(o["ugm3"], 1)}
+                for o in in_bounds
+            ],
+        }
+    except Exception as e:
+        print(f"::warning::AirNow observations fetch failed: {e}")
+        payload = {"hour": None, "observations": []}
+    (site_dir / "obs.json").write_text(json.dumps(payload, indent=1))
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--site-dir", required=True)
@@ -155,6 +184,7 @@ def main():
                     pass
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     (site_dir / "manifest.json").write_text(sitemod.build_manifest(CFG["active"], regions_out, now_iso))
+    write_observations(site_dir, regions_out)
     (site_dir / ".nojekyll").write_text("")
     print(f"built cycle {cid}: {sum(r['hours'] for r in regions_out)} tiles")
 
