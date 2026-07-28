@@ -15,8 +15,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # A full 49-hour cycle measured 39 min on 2026-07-27 — uncomfortably close to
-    # the old 45 min cap, and multi-region builds (Plan 3) will add to it.
+    # 8 regions (home + conus + up to 6 plume) x 49 hours: one download pass
+    # (~30 min, measured 39 min single-region on 2026-07-27) + ~6 s regrid per
+    # region-hour.
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
