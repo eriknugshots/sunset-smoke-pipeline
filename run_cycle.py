@@ -51,36 +51,47 @@ def rrfs_canary(models):
     except Exception:
         pass
 
-def process_hour(model, region, grid, cyc, fhr, out_dir, work):
+def fetch_hour(model, cyc, fhr, work):
+    """Download this forecast hour's MASSDEN+HGT records ONCE. Every region
+    regrids from the returned file — regions differ only in their -new_grid
+    arguments, so re-downloading per region would multiply bandwidth by the
+    region count (8 after Plan 3: home + CONUS + up to 6 plume boxes)."""
     nat_url = tile_url(model, cyc, fhr)
     recs = idxmod.parse_idx(http(nat_url + ".idx").decode())
     sel_m = idxmod.select_records(recs, model["massdenVar"], "hybrid level", model["hybridLevels"])
     sel_h = idxmod.select_records(recs, model["hgtVar"], "hybrid level", model["hybridLevels"])
     if len(sel_m) < model["hybridLevels"] or len(sel_h) < model["hybridLevels"]:
         raise RuntimeError(f"f{fhr:02d}: incomplete records ({len(sel_m)} massden, {len(sel_h)} hgt)")
-    gp, bp = work / f"f{fhr:02d}.grib2", work / f"f{fhr:02d}.bin"
+    gp = work / f"f{fhr:02d}.grib2"
+    grib.fetch_ranges(nat_url, idxmod.byte_ranges(sel_m + sel_h, recs), gp)
+    return gp
+
+def tile_region(model, region, grid, gp, cyc, fhr, out_dir, work):
+    """Regrid the already-downloaded hour onto one region's grid and write its
+    SMK1 tile. Work-file names carry the region id: hours run concurrently and
+    regions run within each hour, so bare f{fhr} names would collide."""
+    bp = work / f"f{fhr:02d}_{region['id']}.bin"
     try:
-        grib.fetch_ranges(nat_url, idxmod.byte_ranges(sel_m + sel_h, recs), gp)
         grib.regrid_to_bin(gp, grid, f":({model['massdenVar']}|{model['hgtVar']}):", bp)
         n = model["hybridLevels"]
         fields = grib.parse_bin(bp.read_bytes(), region["nx"], region["ny"], 2 * n)
     finally:
-        gp.unlink(missing_ok=True)
         bp.unlink(missing_ok=True)
-    # wgrib2 preserves input record order: our ranges were massden levels 1..n then hgt 1..n.
-    # VERIFY in Task 8 with -s inventory; if wgrib2 reorders, split into two -match passes.
+    # wgrib2 preserves input record order (verified across a full 49-hour cycle,
+    # 2026-07-27): massden levels 1..n then hgt 1..n, as fetch_ranges wrote them.
     mass, hgt = fields[:n], fields[n:]
     terr, dens = build_tile_arrays(mass, hgt, region["nz"], region["zStepM"])
     (out_dir / f"f{fhr:02d}.smk1").write_bytes(
         encode_smk1(grid["bounds"], region["nx"], region["ny"], region["nz"],
                     0.0, float(region["zStepM"]), 4.0, terr, dens))
     # HPBL sidecar (captured per spec §A.1; unused by client v1). It costs a
-    # SECOND .idx fetch, byte-range download and wgrib2 pass per forecast hour —
-    # a large slice of the cycle's runtime for a field nothing reads yet, so it is
-    # opt-in via model-config "captureHpbl".
+    # SECOND .idx fetch, byte-range download and wgrib2 pass per REGION-hour —
+    # per-region duplication accepted to keep each region's directory
+    # self-contained — so it stays opt-in via model-config "captureHpbl".
     if not CFG.get("captureHpbl"):
         return
-    sgp, sbp = work / f"sfc{fhr:02d}.grib2", work / f"sfc{fhr:02d}.bin"
+    sgp = work / f"sfc{fhr:02d}_{region['id']}.grib2"
+    sbp = work / f"sfc{fhr:02d}_{region['id']}.bin"
     try:
         sfc_url = tile_url(model, cyc, fhr, "sfcPath")
         srecs = idxmod.parse_idx(http(sfc_url + ".idx").decode())
@@ -90,10 +101,17 @@ def process_hour(model, region, grid, cyc, fhr, out_dir, work):
         hp = grib.parse_bin(sbp.read_bytes(), region["nx"], region["ny"], 1)[0]
         (out_dir / f"hpbl_f{fhr:02d}.bin").write_bytes(zlib.compress(hp.astype("<f4").tobytes(), 6))
     except Exception as e:
-        print(f"::warning::HPBL f{fhr:02d} skipped: {e}")
+        print(f"::warning::HPBL {region['id']} f{fhr:02d} skipped: {e}")
     finally:
         sgp.unlink(missing_ok=True)
         sbp.unlink(missing_ok=True)
+
+def build_regions(*_):
+    """Task-3 stub: fixed regions only. The real version (signature
+    build_regions(model, cyc, work)) seeds plume regions from the cycle's own
+    surface-smoke field; call sites already pass those args so Task 3 only
+    changes this body."""
+    return [dict(r, kind=r.get("kind", "home")) for r in REGIONS]
 
 def write_observations(site_dir, regions_out):
     """Fetch EPA AirNow ground-truth PM2.5 observations for the union of all
@@ -136,6 +154,15 @@ def main():
     cyc_iso = cyc.strftime("%Y-%m-%dT%H:00:00Z")
     cid = sitemod.cycle_id(cyc_iso)
     expected_hours = model["synopticHorizon"] + 1
+    # Region list BEFORE the early-exit gate: completeness must cover every
+    # region this run would build (a newly appeared plume region correctly
+    # forces a rebuild). Seeding is deterministic per cycle, so re-running a
+    # published-complete cycle reconstructs the same list and still exits.
+    # NOTE (Task 3): the real build_regions downloads f01 into `work` — keep
+    # `work` mkdir'd before this call then, but leave site_dir untouched until
+    # after the gate (an early exit must not create directories).
+    work = ROOT / "work"
+    ALL_REGIONS = build_regions(model, cyc, work)
     prev = None
     if args.pages_base:
         try:
@@ -150,7 +177,7 @@ def main():
                 complete = all(
                     prev_by_id.get(region["id"], {}).get("cycleId") == cid
                     and prev_by_id.get(region["id"], {}).get("hours", 0) >= expected_hours
-                    for region in REGIONS
+                    for region in ALL_REGIONS
                 )
                 if complete:
                     print(f"cycle {cid} already published complete — nothing to do")
@@ -158,38 +185,58 @@ def main():
         except Exception:
             prev = None
     hours = args.hours if args.hours is not None else expected_hours
-    site_dir = Path(args.site_dir); work = ROOT / "work"
+    site_dir = Path(args.site_dir)
     site_dir.mkdir(parents=True, exist_ok=True); work.mkdir(exist_ok=True)
-    regions_out = []
-    for region in REGIONS:
-        grid = grib.region_grid_args(region)
-        out_dir = site_dir / "tiles" / region["id"] / cid
-        out_dir.mkdir(parents=True, exist_ok=True)
-        max_ok = -1
-        # Forecast hours are independent, and the cycle is dominated by ~30 MB of
-        # byte-range download per hour — pure I/O wait. Running them concurrently
-        # turns a serial ~40 min cycle into roughly the slowest few hours. Threads
-        # (not processes) are right here: urllib blocks on the socket, wgrib2 is a
-        # subprocess, and numpy releases the GIL, so all three overlap.
-        workers = max(1, int(os.environ.get("CYCLE_WORKERS", "6")))
-        results = {}
-        with cf.ThreadPoolExecutor(max_workers=workers) as pool:
-            futures = {pool.submit(process_hour, model, region, grid, cyc, f, out_dir, work): f
-                       for f in range(hours)}
-            for fut in cf.as_completed(futures):
-                fhr = futures[fut]
+    grids = {r["id"]: grib.region_grid_args(r) for r in ALL_REGIONS}
+    out_dirs = {}
+    for r in ALL_REGIONS:
+        d = site_dir / "tiles" / r["id"] / cid
+        d.mkdir(parents=True, exist_ok=True)
+        out_dirs[r["id"]] = d
+
+    # Hour-outer, region-inner: each hour's CONUS GRIB is fetched ONCE and every
+    # region regrids from it. Hours stay concurrent — they are independent, and
+    # the cycle is dominated by ~30 MB of byte-range download per hour (pure I/O
+    # wait), so threads turn a serial ~40 min download pass into roughly the
+    # slowest few hours. Regions within one hour run serially in that hour's
+    # thread: regrids are ~6 s of subprocess each and overlap across hours.
+    def hour_job(fhr):
+        gp = fetch_hour(model, cyc, fhr, work)
+        ok_ids = []
+        try:
+            for r in ALL_REGIONS:
                 try:
-                    fut.result()
-                    results[fhr] = True
-                    print(f"{region['id']} f{fhr:02d} ok")
+                    tile_region(model, r, grids[r["id"]], gp, cyc, fhr, out_dirs[r["id"]], work)
+                    ok_ids.append(r["id"])
+                    print(f"{r['id']} f{fhr:02d} ok")
                 except Exception as e:
-                    print(f"::warning::{region['id']} f{fhr:02d} failed: {e}")
-        max_ok = max([f for f, ok in results.items() if ok], default=-1)
+                    print(f"::warning::{r['id']} f{fhr:02d} failed: {e}")
+        finally:
+            gp.unlink(missing_ok=True)
+        return ok_ids
+
+    workers = max(1, int(os.environ.get("CYCLE_WORKERS", "6")))
+    results = {}
+    with cf.ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(hour_job, f): f for f in range(hours)}
+        for fut in cf.as_completed(futures):
+            fhr = futures[fut]
+            try:
+                results[fhr] = fut.result()
+            except Exception as e:
+                print(f"::warning::f{fhr:02d} download failed: {e}")
+                results[fhr] = []
+
+    regions_out = []
+    for r in ALL_REGIONS:
         # hours is the fetch EXTENT (highest successful fhr + 1), not a count of
         # successes: the client tolerates interior gaps by design, so a failure
         # at e.g. f03 must not truncate the manifest before the later f48 that
         # actually built successfully.
-        regions_out.append({"id": region["id"], "bounds": grid["bounds"], "cycle": cyc_iso, "hours": max_ok + 1})
+        max_ok = max([f for f, ids in results.items() if r["id"] in ids], default=-1)
+        regions_out.append({"id": r["id"], "bounds": grids[r["id"]]["bounds"],
+                            "cycle": cyc_iso, "hours": max_ok + 1,
+                            "kind": r.get("kind", "home")})
     # carryover previous cycle files
     for p in sitemod.plan_carryover(prev, cid):
         dst = site_dir / p["path"]; dst.mkdir(parents=True, exist_ok=True)

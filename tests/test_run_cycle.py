@@ -23,12 +23,18 @@ def test_manifest_hours_is_extent_not_count(tmp_path, monkeypatch):
 
     calls = []
 
-    def fake_process_hour(model, region, grid, cyc, fhr, out_dir, work):
+    # fetch-once semantics: fetch_hour succeeds (returns a path the caller may
+    # unlink with missing_ok), tile_region fails for f01's only region — the
+    # manifest-extent contract under test is identical to the old process_hour.
+    monkeypatch.setattr(run_cycle, "fetch_hour",
+                        lambda model, cyc, fhr, work: tmp_path / f"f{fhr:02d}.grib2")
+
+    def fake_tile_region(model, region, grid, gp, cyc, fhr, out_dir, work):
         calls.append(fhr)
         if fhr == 1:
             raise RuntimeError("simulated f01 failure")
 
-    monkeypatch.setattr(run_cycle, "process_hour", fake_process_hour)
+    monkeypatch.setattr(run_cycle, "tile_region", fake_tile_region)
 
     site_dir = tmp_path / "site"
     monkeypatch.setattr(sys, "argv", ["run_cycle.py", "--site-dir", str(site_dir), "--hours", "3"])
@@ -57,7 +63,9 @@ def test_early_exit_gated_on_completeness(tmp_path, monkeypatch):
     expected = model["synopticHorizon"] + 1
     region_id = run_cycle.REGIONS[0]["id"]
 
-    monkeypatch.setattr(run_cycle, "process_hour", lambda *a, **k: None)
+    monkeypatch.setattr(run_cycle, "fetch_hour",
+                        lambda model, cyc, fhr, work: tmp_path / f"f{fhr:02d}.grib2")
+    monkeypatch.setattr(run_cycle, "tile_region", lambda *a, **k: None)
 
     def make_http(prev_hours):
         manifest_bytes = json.dumps(
