@@ -1,6 +1,44 @@
 {
   "regions": [
-    { "id": "central-oregon", "centerLat": 44.06, "centerLon": -121.32, "widthKm": 480,
-      "nx": 160, "ny": 160, "nz": 40, "zStepM": 250 }
-  ]
+    {
+      "id": "central-oregon",
+      "kind": "home",
+      "centerLat": 44.06,
+      "centerLon": -121.32,
+      "widthKm": 480,
+      "nx": 160,
+      "ny": 160,
+      "nz": 40,
+      "zStepM": 250
+    },
+    {
+      "id": "conus",
+      "kind": "conus",
+      "bounds": {
+        "west": -125.0,
+        "south": 24.5,
+        "east": -66.5,
+        "north": 49.5
+      },
+      "nx": 160,
+      "ny": 100,
+      "nz": 40,
+      "zStepM": 250
+    }
+  ],
+  "plumeRegions": {
+    "enabled": true,
+    "limit": 6,
+    "thresholdUgm3": 10.0,
+    "minSeparationKm": 500,
+    "widthKm": 960,
+    "nx": 160,
+    "ny": 160,
+    "nz": 40,
+    "zStepM": 250
+  },
+  "markers": {
+    "minAcres": 1000,
+    "mergeKm": 300
+  }
 }

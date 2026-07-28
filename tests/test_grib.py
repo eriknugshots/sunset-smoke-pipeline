@@ -33,3 +33,15 @@ def test_parse_bin_rejects_wrong_marker():
     import pytest
     with pytest.raises(ValueError):
         parse_bin(blob, 4, 3, 1)
+
+
+def test_region_grid_args_explicit_bounds():
+    """The CONUS base region is not a square km box around a centre, so it is
+    configured with explicit degree bounds taken verbatim."""
+    r = {"bounds": {"west": -125.0, "south": 24.5, "east": -66.5, "north": 49.5},
+         "nx": 160, "ny": 100}
+    g = region_grid_args(r)
+    assert g["bounds"] == r["bounds"]
+    # wgrib2 args carry west/south + counts + steps (dlon = 58.5/160, dlat = 25/100)
+    assert g["lon"].startswith("-125.0") and ":160:" in g["lon"]
+    assert g["lat"].startswith("24.5") and ":100:" in g["lat"]

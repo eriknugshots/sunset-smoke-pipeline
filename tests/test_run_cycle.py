@@ -20,6 +20,11 @@ def test_manifest_hours_is_extent_not_count(tmp_path, monkeypatch):
     manifest before a later hour that actually built successfully."""
     monkeypatch.setattr(run_cycle, "ROOT", tmp_path)
     monkeypatch.setattr(run_cycle, "http", _idx_http)
+    # These tests pin the ORCHESTRATION contracts (manifest extent, completeness
+    # gate) — one region and no plume seeding keeps them independent of how many
+    # fixed regions the shipping config carries.
+    monkeypatch.setattr(run_cycle, "REGIONS", run_cycle.REGIONS[:1])
+    monkeypatch.setattr(run_cycle, "PLUME_CFG", {"enabled": False})
 
     calls = []
 
@@ -56,6 +61,8 @@ def test_early_exit_gated_on_completeness(tmp_path, monkeypatch):
     top up. Only a manifest that already reports the full horizon early-exits."""
     monkeypatch.setattr(run_cycle, "ROOT", tmp_path)
     monkeypatch.setattr(run_cycle, "http", _idx_http)
+    monkeypatch.setattr(run_cycle, "REGIONS", run_cycle.REGIONS[:1])
+    monkeypatch.setattr(run_cycle, "PLUME_CFG", {"enabled": False})
 
     model = run_cycle.CFG["models"][run_cycle.CFG["active"]]
     cyc = run_cycle.latest_synoptic(model)

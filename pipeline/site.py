@@ -24,13 +24,18 @@ def cycle_id(cycle_iso):
     return cycle_iso[:10].replace("-", "") + "t" + cycle_iso[11:13] + "z"
 
 
-def build_manifest(model, regions, now_iso):
-    """Serialize manifest.json contents (see plan for the target shape)."""
-    out = {"generatedAt": now_iso, "model": model, "regions": []}
+def build_manifest(model, regions, now_iso, fires=None):
+    """Serialize manifest.json contents (see plan for the target shape).
+
+    `fires` is the NIFC marker list (client horizon labels only — regions are
+    seeded from the smoke field itself, see pipeline/plumes.py); `kind` is
+    home | conus | plume so the client can tell coverage tiers apart."""
+    out = {"generatedAt": now_iso, "model": model, "fires": fires or [], "regions": []}
     for r in regions:
         cid = cycle_id(r["cycle"])
         out["regions"].append({"id": r["id"], "bounds": r["bounds"], "cycle": r["cycle"],
                                "cycleId": cid, "hours": r["hours"],
+                               "kind": r.get("kind", "home"),
                                "path": f"tiles/{r['id']}/{cid}"})
     return json.dumps(out, indent=1)
 

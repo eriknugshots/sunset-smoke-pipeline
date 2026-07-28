@@ -30,3 +30,13 @@ def test_plan_carryover_keeps_only_previous_cycle():
     plan = plan_carryover(prev, new_cycle_id="20260727t12z")
     assert ("tiles/central-oregon/20260727t06z", 49) in [(p["path"], p["hours"]) for p in plan]
     assert plan_carryover(prev, new_cycle_id="20260727t06z") == []   # same cycle -> nothing to carry
+
+
+def test_manifest_carries_fires_and_kind():
+    m = json.loads(build_manifest("hrrr", [{"id": "plume-45n120w", "kind": "plume",
+        "bounds": {"west": -126.0, "south": 40.0, "east": -114.0, "north": 49.0},
+        "cycle": "2026-07-27T12:00:00Z", "hours": 49}], now_iso="2026-07-27T13:22:00Z",
+        fires=[{"name": "CROSSWHITE", "lat": 44.8, "lon": -120.2, "acres": 159417}]))
+    assert m["regions"][0]["kind"] == "plume"
+    assert m["fires"][0]["name"] == "CROSSWHITE"
+    assert json.loads(build_manifest("hrrr", [], now_iso="x"))["fires"] == []

@@ -6,6 +6,15 @@ import numpy as np
 
 
 def region_grid_args(region):
+    # Explicit-bounds form (the CONUS base region): not expressible as a square
+    # km box around a centre, so the configured bounds are taken verbatim.
+    if "bounds" in region:
+        b = region["bounds"]
+        dlat = (b["north"] - b["south"]) / region["ny"]
+        dlon = (b["east"] - b["west"]) / region["nx"]
+        return {"lon": f"{b['west']:.8f}:{region['nx']}:{dlon:.10f}",
+                "lat": f"{b['south']:.8f}:{region['ny']}:{dlat:.10f}",
+                "bounds": dict(b)}
     km_lat = 111.0
     km_lon = 111.0 * float(np.cos(np.radians(region["centerLat"])))
     half_lat = (region["widthKm"] / 2) / km_lat

@@ -5,13 +5,17 @@ import argparse, concurrent.futures as cf, datetime, json, os, re, sys, urllib.e
 from pathlib import Path
 import numpy as np
 from pipeline import idx as idxmod, grib, site as sitemod, observations as obsmod
+from pipeline import fires as firesmod, plumes as plumesmod
 from pipeline.encode import encode_smk1
 from pipeline.tile import build_tile_arrays
 import zlib
 
 ROOT = Path(__file__).parent
 CFG = json.loads((ROOT / "model-config.json").read_text())
-REGIONS = json.loads((ROOT / "regions.json").read_text())["regions"]
+_REGIONS_CFG = json.loads((ROOT / "regions.json").read_text())
+REGIONS = _REGIONS_CFG["regions"]
+PLUME_CFG = _REGIONS_CFG.get("plumeRegions", {})
+MARKER_CFG = _REGIONS_CFG.get("markers", {})
 
 def http(url, timeout=60):
     with urllib.request.urlopen(url, timeout=timeout) as r:
@@ -106,12 +110,69 @@ def tile_region(model, region, grid, gp, cyc, fhr, out_dir, work):
         sgp.unlink(missing_ok=True)
         sbp.unlink(missing_ok=True)
 
-def build_regions(*_):
-    """Task-3 stub: fixed regions only. The real version (signature
-    build_regions(model, cyc, work)) seeds plume regions from the cycle's own
-    surface-smoke field; call sites already pass those args so Task 3 only
-    changes this body."""
-    return [dict(r, kind=r.get("kind", "home")) for r in REGIONS]
+def build_regions(model, cyc, work):
+    """Fixed regions (home + CONUS) from config, plus one 960 km box per
+    surface-smoke peak in this cycle's f01 CONUS field. Seeding from the smoke
+    field, not the NIFC fire list (Erik, 2026-07-27): smoke is densest at its
+    sources so fires are still covered, but a plume parked over a town 800
+    miles downwind attracts a box too — the fire list cannot see that.
+
+    Costs one duplicate f01 download (~30 MB) before the hour loop refetches
+    it — accepted for simplicity. Deterministic per cycle (same cycle -> same
+    peaks -> same ids), which the completeness gate relies on. Seeding failure
+    is NOT fatal: a cycle with only home + CONUS is far better than no cycle."""
+    regions = [dict(r, kind=r.get("kind", "home")) for r in REGIONS]
+    if not PLUME_CFG.get("enabled"):
+        return regions
+    conus = next((r for r in regions if r.get("kind") == "conus"), None)
+    if conus is None:
+        print("::warning::no conus region configured; plume seeding skipped")
+        return regions
+    try:
+        grid = grib.region_grid_args(conus)
+        gp = fetch_hour(model, cyc, 1, work)
+        bp = work / "seed.bin"
+        try:
+            grib.regrid_to_bin(gp, grid, f":({model['massdenVar']}|{model['hgtVar']}):", bp)
+            n = model["hybridLevels"]
+            fields = grib.parse_bin(bp.read_bytes(), conus["nx"], conus["ny"], 2 * n)
+        finally:
+            gp.unlink(missing_ok=True); bp.unlink(missing_ok=True)
+        surf = fields[0] * 1e9        # lowest hybrid level, kg/m³ -> µg/m³ at ~8 m AGL
+        peaks = plumesmod.smoke_peaks(
+            surf, grid["bounds"],
+            threshold_ugm3=PLUME_CFG.get("thresholdUgm3", 10.0),
+            limit=PLUME_CFG.get("limit", 6),
+            min_separation_km=PLUME_CFG.get("minSeparationKm", 500.0))
+    except Exception as e:
+        print(f"::warning::plume seeding failed, fixed regions only: {e}")
+        return regions
+    taken = {r["id"] for r in regions}
+    for pk in peaks:
+        rid = plumesmod.region_id_for(pk["lat"], pk["lon"])
+        if rid in taken:
+            continue              # two peaks snapping to the same 1° cell -> keep the stronger
+        taken.add(rid)
+        regions.append({"id": rid, "kind": "plume",
+                        "centerLat": pk["lat"], "centerLon": pk["lon"],
+                        "widthKm": PLUME_CFG["widthKm"], "nx": PLUME_CFG["nx"],
+                        "ny": PLUME_CFG["ny"], "nz": PLUME_CFG["nz"],
+                        "zStepM": PLUME_CFG["zStepM"], "peakUgm3": round(pk["ugm3"], 1)})
+    print(f"regions: {[r['id'] for r in regions]}")
+    return regions
+
+def marker_fires():
+    """NIFC fire clusters for the client's horizon markers ONLY -- fires no
+    longer drive region placement (regions follow the smoke itself). Failure
+    costs markers, never coverage: returns [] and warns."""
+    try:
+        fires = firesmod.fetch_fires(min_acres=MARKER_CFG.get("minAcres", 1000))
+        clusters = firesmod.cluster_fires(fires, merge_km=MARKER_CFG.get("mergeKm", 300.0))
+        return [{"name": c["lead"], "lat": round(c["lat"], 3), "lon": round(c["lon"], 3),
+                 "acres": round(c["acres"])} for c in clusters]
+    except Exception as e:
+        print(f"::warning::NIFC marker fetch failed: {e}")
+        return []
 
 def write_observations(site_dir, regions_out):
     """Fetch EPA AirNow ground-truth PM2.5 observations for the union of all
@@ -162,6 +223,7 @@ def main():
     # `work` mkdir'd before this call then, but leave site_dir untouched until
     # after the gate (an early exit must not create directories).
     work = ROOT / "work"
+    work.mkdir(exist_ok=True)   # seeding downloads f01 here; site_dir stays untouched until after the gate
     ALL_REGIONS = build_regions(model, cyc, work)
     prev = None
     if args.pages_base:
@@ -247,7 +309,8 @@ def main():
                 except Exception:
                     pass
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    (site_dir / "manifest.json").write_text(sitemod.build_manifest(CFG["active"], regions_out, now_iso))
+    (site_dir / "manifest.json").write_text(
+        sitemod.build_manifest(CFG["active"], regions_out, now_iso, marker_fires()))
     write_observations(site_dir, regions_out)
     (site_dir / ".nojekyll").write_text("")
     print(f"built cycle {cid}: {sum(r['hours'] for r in regions_out)} tiles")
