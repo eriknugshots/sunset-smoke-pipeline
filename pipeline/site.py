@@ -33,10 +33,18 @@ def build_manifest(model, regions, now_iso, fires=None):
     out = {"generatedAt": now_iso, "model": model, "fires": fires or [], "regions": []}
     for r in regions:
         cid = cycle_id(r["cycle"])
-        out["regions"].append({"id": r["id"], "bounds": r["bounds"], "cycle": r["cycle"],
-                               "cycleId": cid, "hours": r["hours"],
-                               "kind": r.get("kind", "home"),
-                               "path": f"tiles/{r['id']}/{cid}"})
+        entry = {"id": r["id"], "bounds": r["bounds"], "cycle": r["cycle"],
+                 "cycleId": cid, "hours": r["hours"],
+                 "kind": r.get("kind", "home"),
+                 "path": f"tiles/{r['id']}/{cid}"}
+        # Past-hours archive (pipeline/history.py): UTC hour stamps, ascending,
+        # every one of which has a file at historyPath/<hour_id>.smk1. Absent
+        # on a first run and on any region whose archive came up empty — the
+        # client must treat it as optional.
+        if r.get("history"):
+            entry["history"] = list(r["history"])
+            entry["historyPath"] = f"tiles/{r['id']}/history"
+        out["regions"].append(entry)
     return json.dumps(out, indent=1)
 
 

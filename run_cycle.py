@@ -5,7 +5,7 @@ import argparse, concurrent.futures as cf, datetime, json, os, re, sys, urllib.e
 from pathlib import Path
 import numpy as np
 from pipeline import idx as idxmod, grib, site as sitemod, observations as obsmod
-from pipeline import fires as firesmod, plumes as plumesmod
+from pipeline import fires as firesmod, plumes as plumesmod, history as historymod
 from pipeline.encode import encode_smk1
 from pipeline.tile import build_tile_arrays
 import zlib
@@ -309,6 +309,13 @@ def main():
                 except Exception:
                     pass
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # Rolling past-hours archive. Must run BEFORE the force-push, while the
+    # previous cycle's tiles are still reachable on the live site — that is the
+    # only place the pre-cycle hours exist. Purely additive: a region whose
+    # archive fetch fails keeps every hour that did land, and the manifest
+    # lists exactly the hours that are actually on disk.
+    historymod.write_archive(site_dir, regions_out, prev, cyc_iso, now_iso,
+                             args.pages_base, lambda u: http(u, timeout=60))
     (site_dir / "manifest.json").write_text(
         sitemod.build_manifest(CFG["active"], regions_out, now_iso, marker_fires()))
     write_observations(site_dir, regions_out)
