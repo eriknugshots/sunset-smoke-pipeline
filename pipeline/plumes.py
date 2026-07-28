@@ -21,6 +21,11 @@ def smoke_peaks(surf_ugm3, bounds, threshold_ugm3=10.0, limit=6, min_separation_
     ny, nx = surf_ugm3.shape
     dlat = (bounds["north"] - bounds["south"]) / ny
     dlon = (bounds["east"] - bounds["west"]) / nx
+    # Mask wgrib2's UNDEFINED fill (9.999e20, cells outside the model's native
+    # domain) INSIDE the picker, so no caller can forget it: unmasked, the CONUS
+    # box's ocean corners out-rank every real plume and eat all the slots
+    # (observed on the first live multi-region run, 2026-07-28).
+    surf_ugm3 = np.where(np.isfinite(surf_ugm3) & (surf_ugm3 < 1e19), surf_ugm3, 0.0)
     accepted = []
     for flat in np.argsort(surf_ugm3, axis=None)[::-1]:
         if len(accepted) >= limit:

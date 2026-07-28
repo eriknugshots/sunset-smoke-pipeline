@@ -62,3 +62,30 @@ def test_build_tile_arrays_shapes_and_terrain():
     assert terr.shape == (ny, nx) and terr.dtype == np.float32
     assert np.array_equal(terr, hgt[0].astype(np.float32))    # terrain = lowest hybrid HGT
     assert dens_u8.shape == (4 * ny * nx,) and dens_u8.dtype == np.uint8
+
+
+def test_out_of_domain_columns_become_empty_not_fatal():
+    """The CONUS latlon box's ocean corners fall outside HRRR's native Lambert
+    grid; wgrib2 fills them with UNDEFINED (9.999e20). Observed live 2026-07-28:
+    those columns made resample_columns raise (heights not ascending), zeroing
+    out the ENTIRE conus region and every plume box touching open water, and
+    the same fill seeded four phantom plume regions over the Atlantic/Pacific.
+    Out-of-domain columns must decode as empty air over sea-level terrain."""
+    nlev, ny, nx = 3, 1, 2
+    hgt = np.zeros((nlev, ny, nx))
+    mass = np.full((nlev, ny, nx), 5e-9)
+    hgt[:, 0, 0] = [100.0, 600.0, 1100.0]
+    hgt[:, 0, 1] = 9.999e20
+    terr, dens = build_tile_arrays(mass, hgt, nz=4, z_step_m=250)
+    d = dens.reshape(4, 1, 2)
+    assert d[:, 0, 1].max() == 0 and terr[0, 1] == 0.0
+    assert d[:, 0, 0].max() > 0 and terr[0, 0] == 100.0
+
+
+def test_all_columns_out_of_domain_raises():
+    """A fully-undefined field is a wrong-records bug, not an ocean corner —
+    it must still fail loudly rather than publish an all-empty tile."""
+    hgt = np.full((3, 1, 2), 9.999e20)
+    mass = np.zeros((3, 1, 2))
+    with pytest.raises(ValueError):
+        build_tile_arrays(mass, hgt, nz=4, z_step_m=250)

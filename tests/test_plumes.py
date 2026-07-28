@@ -38,3 +38,14 @@ def test_peak_lat_lon_is_the_cell_centre():
 
 def test_region_id_snaps_to_one_degree():
     assert region_id_for(44.42, -120.71) == "plume-44n121w"
+
+
+def test_undefined_fill_cells_are_not_peaks():
+    """wgrib2 fills cells outside HRRR's native domain with 9.999e20; those
+    seeded four phantom plume regions over the Atlantic/Pacific on the first
+    live multi-region run (2026-07-28). UNDEFINED must never win a slot."""
+    f = _field()
+    f[0, 0] = 9.999e20          # ocean corner, outside the model domain
+    f[60, 20] = 80.0            # real plume
+    peaks = smoke_peaks(f, BOUNDS, threshold_ugm3=10.0, limit=6, min_separation_km=500.0)
+    assert len(peaks) == 1 and peaks[0]["ugm3"] == 80.0
