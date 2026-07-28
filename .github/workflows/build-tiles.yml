@@ -2,6 +2,13 @@ name: build-tiles
 on:
   schedule:
     - cron: "23 * * * *"      # hourly; run_cycle exits fast unless a new synoptic cycle exists
+  push:
+    branches: [main]
+    # Exercise pipeline-code changes immediately instead of waiting for the
+    # next cron tick. The completeness gate makes a no-op push cheap, and the
+    # concurrency group below serialises against a running cron build.
+    paths: ["run_cycle.py", "pipeline/**", "regions.json", "model-config.json",
+            ".github/workflows/build-tiles.yml"]
   workflow_dispatch:
     inputs:
       hours:
