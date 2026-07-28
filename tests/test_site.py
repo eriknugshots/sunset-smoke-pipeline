@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline.site import cycle_id, build_manifest, plan_carryover
+from pipeline.site import cycle_id, build_manifest
 
 
 def test_cycle_id():
@@ -23,13 +23,6 @@ def test_build_manifest_shape():
     assert r["cycleId"] == "20260727t12z" and r["path"].endswith("/20260727t12z")
     assert m["generatedAt"] == "2026-07-27T13:22:00Z"
 
-
-def test_plan_carryover_keeps_only_previous_cycle():
-    prev = {"regions": [{"id": "central-oregon", "cycleId": "20260727t06z",
-                         "path": "tiles/central-oregon/20260727t06z", "hours": 49}]}
-    plan = plan_carryover(prev, new_cycle_id="20260727t12z")
-    assert ("tiles/central-oregon/20260727t06z", 49) in [(p["path"], p["hours"]) for p in plan]
-    assert plan_carryover(prev, new_cycle_id="20260727t06z") == []   # same cycle -> nothing to carry
 
 
 def test_manifest_carries_fires_and_kind():

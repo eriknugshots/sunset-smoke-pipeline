@@ -1,10 +1,10 @@
-# pipeline/site.py — manifest generation and previous-cycle carryover planning.
+# pipeline/site.py — manifest generation.
 #
 # State model: the live GitHub Pages site IS the pipeline's state. Each run
-# downloads whichever previous-cycle files it wants to keep (see
-# plan_carryover), writes the new cycle's tiles alongside them, regenerates
-# manifest.json (see build_manifest), then force-pushes one orphan commit so
-# the Pages repo's history never grows.
+# reads the published manifest, downloads the past hours worth keeping (see
+# pipeline/history.py), writes the new cycle's tiles alongside them,
+# regenerates manifest.json (see build_manifest), then force-pushes one orphan
+# commit so the Pages repo's history never grows.
 import json
 import re
 
@@ -48,20 +48,9 @@ def build_manifest(model, regions, now_iso, fires=None):
     return json.dumps(out, indent=1)
 
 
-def plan_carryover(prev_manifest, new_cycle_id):
-    """Which previous-cycle region dirs to re-download into the new site.
-
-    prev_manifest is the parsed manifest.json from the site as it stood
-    before this run (or falsy if there was none, e.g. first-ever run).
-    Returns a list of {"id", "path", "hours"} for every region whose cycleId
-    differs from new_cycle_id — i.e. everything worth keeping around from
-    the previous run. A region already on new_cycle_id needs no carryover
-    (this run is about to (re)generate it fresh).
-    """
-    if not prev_manifest:
-        return []
-    plans = []
-    for r in prev_manifest.get("regions", []):
-        if r.get("cycleId") and r["cycleId"] != new_cycle_id:
-            plans.append({"path": r["path"], "hours": r["hours"], "id": r["id"]})
-    return plans
+# plan_carryover() was removed 2026-07-28. It selected the previous cycle's
+# region dirs to re-download into the new site, but build_manifest only ever
+# describes the CURRENT cycle, so nothing the client reads ever referenced
+# them — ~149 MB of unreachable files per cycle. The past hours that were
+# actually worth keeping now live in the rolling archive (pipeline/history.py),
+# which indexes them properly.

@@ -299,15 +299,19 @@ def main():
         regions_out.append({"id": r["id"], "bounds": grids[r["id"]]["bounds"],
                             "cycle": cyc_iso, "hours": max_ok + 1,
                             "kind": r.get("kind", "home")})
-    # carryover previous cycle files
-    for p in sitemod.plan_carryover(prev, cid):
-        dst = site_dir / p["path"]; dst.mkdir(parents=True, exist_ok=True)
-        for fhr in range(p["hours"]):
-            for name in (f"f{fhr:02d}.smk1", f"hpbl_f{fhr:02d}.bin"):
-                try:
-                    (dst / name).write_bytes(http(f"{args.pages_base.rstrip('/')}/{p['path']}/{name}", timeout=60))
-                except Exception:
-                    pass
+    # (The previous-cycle carryover lived here and was removed 2026-07-28. It
+    # re-downloaded and republished the entire previous cycle — ~149 MB — but
+    # build_manifest only ever describes THIS cycle's regions, so nothing the
+    # client can read ever pointed at those files. Worse, the early-exit gate
+    # skips the following hourly runs, so the dead copy survived the full 6 h
+    # until the next flip. Dropping it is what makes room for a 48 h archive
+    # inside a 0.5 GB budget. The archive below does NOT depend on it: it
+    # sources the previous cycle from the live site, where that run published
+    # it as its own current cycle.
+    #
+    # Accepted cost: a browser holding a manifest cached from just before a
+    # flip can 404 on a few tiles for a few minutes. ensureSmokeHour already
+    # swallows a failed hour and falls back to the nearest loaded one.)
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     # Rolling past-hours archive. Must run BEFORE the force-push, while the
     # previous cycle's tiles are still reachable on the live site — that is the
