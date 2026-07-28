@@ -102,3 +102,44 @@ def test_early_exit_gated_on_completeness(tmp_path, monkeypatch):
     monkeypatch.setattr(run_cycle, "http", make_http(expected))
     run_cycle.main()
     assert not site_dir.exists()
+
+
+def test_marker_fires_publishes_individual_fires_not_clusters(monkeypatch):
+    """Every fire keeps its own name, acreage and true position.
+
+    The clustered version collapsed a 300 km neighbourhood into one entry
+    named after its heaviest member, with summed acreage at a weight-averaged
+    centroid — near Bend that hid AKAWA BUTTE / Bench / GREEN MOUNTAIN /
+    BREWER inside a single "0445 CROSSWHITE, 697k ac" sited 121 km away.
+    """
+    near_bend = [
+        {"name": "0433 BREWER",     "lat": 44.32, "lon": -121.90, "acres": 70821.0, "contained": 10.0},
+        {"name": "Bench",           "lat": 44.30, "lon": -120.60, "acres": 40296.0, "contained": 0.0},
+        {"name": "0494 AKAWA BUTTE","lat": 44.40, "lon": -121.00, "acres": 27308.0, "contained": 0.0},
+        {"name": "0611 GREEN MOUNTAIN","lat": 44.50, "lon": -121.20, "acres": 2136.0, "contained": 0.0},
+        {"name": "0445 CROSSWHITE", "lat": 44.85, "lon": -120.47, "acres": 165883.0, "contained": 20.0},
+    ]
+    monkeypatch.setattr(run_cycle.firesmod, "fetch_fires", lambda **kw: list(near_bend))
+    out = run_cycle.marker_fires()
+
+    assert [f["name"] for f in out][0] == "0445 CROSSWHITE"      # biggest first
+    assert {f["name"] for f in out} == {f["name"] for f in near_bend}, "no fire may be absorbed"
+    by_name = {f["name"]: f for f in out}
+    assert by_name["0433 BREWER"]["acres"] == 70821               # own acreage, not a cluster sum
+    assert by_name["0433 BREWER"]["lat"] == 44.32                 # own position, not a centroid
+    assert by_name["0433 BREWER"]["lon"] == -121.9
+    assert all(f["acres"] < 200000 for f in out), "a summed-cluster acreage would exceed every real fire"
+
+
+def test_marker_fires_caps_the_list_and_survives_a_feed_failure(monkeypatch):
+    many = [{"name": f"f{i}", "lat": 40.0, "lon": -100.0, "acres": float(i + 1), "contained": 0.0}
+            for i in range(500)]
+    monkeypatch.setattr(run_cycle.firesmod, "fetch_fires", lambda **kw: many)
+    out = run_cycle.marker_fires()
+    assert len(out) == 200
+    assert out[0]["name"] == "f499"        # biggest first, so the cap drops the smallest
+
+    def boom(**kw):
+        raise OSError("NIFC down")
+    monkeypatch.setattr(run_cycle.firesmod, "fetch_fires", boom)
+    assert run_cycle.marker_fires() == []   # markers are never worth failing a cycle over

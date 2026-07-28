@@ -162,14 +162,29 @@ def build_regions(model, cyc, work):
     return regions
 
 def marker_fires():
-    """NIFC fire clusters for the client's horizon markers ONLY -- fires no
-    longer drive region placement (regions follow the smoke itself). Failure
-    costs markers, never coverage: returns [] and warns."""
+    """INDIVIDUAL active NIFC fires for the client. Failure costs markers,
+    never coverage: returns [] and warns.
+
+    Not clustered. Clustering (merge_km=300) belonged to the original design
+    where the fire list chose where to place regions; regions are seeded from
+    the smoke field itself now, and for a per-fire list the merge was actively
+    wrong. It published one entry per 300 km neighbourhood, named after the
+    heaviest member, with the acreage of ALL members summed and the position a
+    weight-averaged centroid — a point where nothing is burning. Near Bend on
+    2026-07-28 that collapsed AKAWA BUTTE (27k ac, 47 km), Bench (40k, 64 km),
+    GREEN MOUNTAIN (2k, 65 km) and BREWER (71k, 67 km) into a single
+    "0445 CROSSWHITE, 697k ac" sited 121 km away. Erik caught the missing
+    fires; the phantom position was the worse half of the bug.
+
+    Sorted biggest first and capped, so a bad fire season can't unbound the
+    manifest — at ~60 bytes per entry the cap costs ~12 KB.
+    """
     try:
         fires = firesmod.fetch_fires(min_acres=MARKER_CFG.get("minAcres", 1000))
-        clusters = firesmod.cluster_fires(fires, merge_km=MARKER_CFG.get("mergeKm", 300.0))
-        return [{"name": c["lead"], "lat": round(c["lat"], 3), "lon": round(c["lon"], 3),
-                 "acres": round(c["acres"])} for c in clusters]
+        fires.sort(key=firesmod.fire_weight, reverse=True)
+        return [{"name": f["name"], "lat": round(f["lat"], 3), "lon": round(f["lon"], 3),
+                 "acres": round(f["acres"])}
+                for f in fires[:MARKER_CFG.get("limit", 200)]]
     except Exception as e:
         print(f"::warning::NIFC marker fetch failed: {e}")
         return []

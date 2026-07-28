@@ -62,7 +62,14 @@ def haversine_km(lat1, lon1, lat2, lon2):
 
 
 def cluster_fires(fires, merge_km=300.0):
-    """Greedy single-pass clustering: the heaviest unassigned fire seeds a cluster and
+    """UNUSED since 2026-07-28 — kept with its tests for reference only.
+
+    Built when the fire list chose where to place regions. Regions are seeded
+    from the smoke field now (pipeline/plumes.py), and the marker list
+    publishes individual fires, because clustering them merged whole
+    neighbourhoods into one entry at a centroid where nothing burns.
+
+    Greedy single-pass clustering: the heaviest unassigned fire seeds a cluster and
     absorbs every unassigned fire within merge_km of that seed. Centre is weight-averaged.
     Greedy (not full single-link) on purpose — it keeps clusters near a dominant fire
     instead of chaining across a whole state."""
@@ -90,7 +97,7 @@ def cluster_fires(fires, merge_km=300.0):
 
 
 def rank_clusters(clusters, limit=6, min_separation_km=500.0):
-    """Heaviest-first selection, with an optional minimum separation between accepted
+    """UNUSED since 2026-07-28 (see cluster_fires). Heaviest-first selection, with an optional minimum separation between accepted
     cluster centres. Each cluster becomes a 960 km wide fire box, so centres closer
     than roughly half that (~500 km) already overlap more than 50% -- wasting a
     pre-warm slot on redundant coverage of the same area instead of a distinct one.
