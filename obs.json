@@ -1,0 +1,4973 @@
+{
+ "hour": "2026-09-06T20:00:00Z",
+ "observations": [
+  {
+   "name": "Laval - Chomedey",
+   "lat": 45.5472,
+   "lon": -73.7472,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Longueuil",
+   "lat": 45.5231,
+   "lon": -73.4939,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Brossard - Parc Sorbonne",
+   "lat": 45.4487,
+   "lon": -73.4686,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Terrebonne - Parc Vaillant",
+   "lat": 45.7048,
+   "lon": -73.6578,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Gatineau - Hull",
+   "lat": 45.4369,
+   "lon": -75.7261,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Qu\u00e9bec - Coll\u00e8ge St-Charles Garnier",
+   "lat": 46.7969,
+   "lon": -71.2461,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Qu\u00e9bec - \u00c9cole Les Primev\u00e8res",
+   "lat": 46.7742,
+   "lon": -71.3697,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Saguenay - UQAC",
+   "lat": 48.4153,
+   "lon": -71.0528,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Rouyn-Noranda - Parc Tremblay",
+   "lat": 48.2344,
+   "lon": -78.9833,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Trois-Rivi\u00e8res - \u00c9cole MEES",
+   "lat": 46.3572,
+   "lon": -72.5462,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Shawinigan - Saint-Marc",
+   "lat": 46.5544,
+   "lon": -72.7361,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Saint-Z\u00e9phirin-de-Courval",
+   "lat": 46.0419,
+   "lon": -72.66,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Charette",
+   "lat": 46.4425,
+   "lon": -72.8928,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Saint-Faustin-Lac-Carr\u00e9",
+   "lat": 46.035,
+   "lon": -74.4819,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Parc de la Gatineau - La P\u00eache",
+   "lat": 45.6222,
+   "lon": -76.0178,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Temiscaming",
+   "lat": 46.7214,
+   "lon": -79.0997,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Auclair",
+   "lat": 47.7333,
+   "lon": -68.7072,
+   "ugm3": 2.1
+  },
+  {
+   "name": "R\u00e9s. Faun. Ashuapmushuan - P\u00e9monka",
+   "lat": 48.8183,
+   "lon": -72.7428,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Deschambault",
+   "lat": 46.6822,
+   "lon": -71.9678,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Tingwick",
+   "lat": 45.9075,
+   "lon": -71.9492,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Saint-Anicet",
+   "lat": 45.1167,
+   "lon": -74.2833,
+   "ugm3": 5.0
+  },
+  {
+   "name": "B\u00e9cancour",
+   "lat": 46.35,
+   "lon": -72.4333,
+   "ugm3": 3.7
+  },
+  {
+   "name": "La Patrie - Ditton",
+   "lat": 45.3733,
+   "lon": -71.2514,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Mont-Saint-Michel",
+   "lat": 46.7686,
+   "lon": -75.4319,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Senneterre",
+   "lat": 48.4325,
+   "lon": -77.1997,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Saint-Jean-sur-Richelieu - L'Acadie",
+   "lat": 45.2942,
+   "lon": -73.3489,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Trois-Rivi\u00e8res - Cap-de-la-Madelaine",
+   "lat": 46.3624,
+   "lon": -72.51,
+   "ugm3": 3.8
+  },
+  {
+   "name": "L\u00e9vis - Parc Georges Maranda",
+   "lat": 46.8024,
+   "lon": -71.1683,
+   "ugm3": 5.1
+  },
+  {
+   "name": "Ottawa Downtown",
+   "lat": 45.4343,
+   "lon": -75.676,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Windsor Downtown",
+   "lat": 42.3158,
+   "lon": -83.0437,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Windsor West",
+   "lat": 42.2929,
+   "lon": -83.0731,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Kingston",
+   "lat": 44.22,
+   "lon": -76.5211,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Toronto East",
+   "lat": 43.7479,
+   "lon": -79.2741,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Hamilton West",
+   "lat": 43.2574,
+   "lon": -79.9077,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Sudbury",
+   "lat": 46.492,
+   "lon": -81.0031,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Sault Ste Marie",
+   "lat": 46.5332,
+   "lon": -84.3099,
+   "ugm3": 3.0
+  },
+  {
+   "name": "London",
+   "lat": 42.9745,
+   "lon": -81.2008,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Sarnia",
+   "lat": 42.9903,
+   "lon": -82.3953,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Peterborough",
+   "lat": 44.3018,
+   "lon": -78.3464,
+   "ugm3": 3.0
+  },
+  {
+   "name": "St. Catharines",
+   "lat": 43.1601,
+   "lon": -79.2348,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Brantford",
+   "lat": 43.1386,
+   "lon": -80.2926,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Kitchener",
+   "lat": 43.4438,
+   "lon": -80.5038,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Guelph",
+   "lat": 43.5516,
+   "lon": -80.2642,
+   "ugm3": 3.0
+  },
+  {
+   "name": "North Bay",
+   "lat": 46.3225,
+   "lon": -79.4494,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Tiverton",
+   "lat": 44.3145,
+   "lon": -81.5497,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Burlington",
+   "lat": 43.3146,
+   "lon": -79.8028,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Dorset",
+   "lat": 45.2243,
+   "lon": -78.9329,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Grand Bend",
+   "lat": 43.3331,
+   "lon": -81.7429,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Barrie",
+   "lat": 44.3823,
+   "lon": -79.7024,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Parry Sound",
+   "lat": 45.3383,
+   "lon": -80.0393,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Port Stanley",
+   "lat": 42.6721,
+   "lon": -81.1629,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Belleville",
+   "lat": 44.1505,
+   "lon": -77.3955,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Chatham",
+   "lat": 42.404,
+   "lon": -82.2083,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Bonner Lake",
+   "lat": 49.3864,
+   "lon": -82.1214,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Kensington Park",
+   "lat": 49.2794,
+   "lon": -122.9711,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Rocky Point Park",
+   "lat": 49.2808,
+   "lon": -122.8492,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Burnaby South",
+   "lat": 49.2153,
+   "lon": -122.9856,
+   "ugm3": 3.9
+  },
+  {
+   "name": "North Delta",
+   "lat": 49.1583,
+   "lon": -122.9017,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Surrey East",
+   "lat": 49.1328,
+   "lon": -122.6942,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Richmond South",
+   "lat": 49.1414,
+   "lon": -123.1083,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Mahon Park",
+   "lat": 49.3239,
+   "lon": -123.0836,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Vancouver Airport",
+   "lat": 49.1864,
+   "lon": -123.1522,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Tsawwassen",
+   "lat": 49.0099,
+   "lon": -123.082,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Abbotsford",
+   "lat": 49.0428,
+   "lon": -122.3097,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Abbotsford Airport",
+   "lat": 49.0215,
+   "lon": -122.3266,
+   "ugm3": 6.6
+  },
+  {
+   "name": "Chilliwack",
+   "lat": 49.1561,
+   "lon": -121.9406,
+   "ugm3": 7.5
+  },
+  {
+   "name": "Pitt Meadows",
+   "lat": 49.2453,
+   "lon": -122.7089,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Langley",
+   "lat": 49.0956,
+   "lon": -122.5669,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Hope",
+   "lat": 49.3697,
+   "lon": -121.4994,
+   "ugm3": 17.3
+  },
+  {
+   "name": "Saturna",
+   "lat": 48.7756,
+   "lon": -123.1286,
+   "ugm3": 3.0
+  },
+  {
+   "name": "FAIRHOPE",
+   "lat": 30.4889,
+   "lon": -87.8706,
+   "ugm3": 3.5
+  },
+  {
+   "name": "ASHLAND",
+   "lat": 33.2811,
+   "lon": -85.8022,
+   "ugm3": 9.3
+  },
+  {
+   "name": "GADSDEN",
+   "lat": 33.9913,
+   "lon": -85.9927,
+   "ugm3": 3.3
+  },
+  {
+   "name": "NO. BHAM",
+   "lat": 33.5531,
+   "lon": -86.815,
+   "ugm3": 8.9
+  },
+  {
+   "name": "MCADORY",
+   "lat": 33.3311,
+   "lon": -87.0036,
+   "ugm3": 8.5
+  },
+  {
+   "name": "Huntsville Old Airport",
+   "lat": 34.6917,
+   "lon": -86.5917,
+   "ugm3": 9.2
+  },
+  {
+   "name": "Chickasaw",
+   "lat": 30.7697,
+   "lon": -88.0875,
+   "ugm3": 2.8
+  },
+  {
+   "name": "MONTG",
+   "lat": 32.4128,
+   "lon": -86.2634,
+   "ugm3": 9.3
+  },
+  {
+   "name": "DECATUR",
+   "lat": 34.5286,
+   "lon": -86.9706,
+   "ugm3": 10.5
+  },
+  {
+   "name": "Ward",
+   "lat": 32.3625,
+   "lon": -88.2779,
+   "ugm3": 11.2
+  },
+  {
+   "name": "Duncanville Middle School",
+   "lat": 33.0954,
+   "lon": -87.4815,
+   "ugm3": 24.8
+  },
+  {
+   "name": "Alamo Lake",
+   "lat": 34.2439,
+   "lon": -113.5586,
+   "ugm3": 2.1
+  },
+  {
+   "name": "West Phoenix",
+   "lat": 33.4838,
+   "lon": -112.1426,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Mesa - Brooks Reservoir",
+   "lat": 33.4105,
+   "lon": -111.8651,
+   "ugm3": 0.0
+  },
+  {
+   "name": "North Phoenix",
+   "lat": 33.5603,
+   "lon": -112.0663,
+   "ugm3": 3.4
+  },
+  {
+   "name": "South Phoenix",
+   "lat": 33.4033,
+   "lon": -112.0731,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Tempe",
+   "lat": 33.4124,
+   "lon": -111.9347,
+   "ugm3": 6.8
+  },
+  {
+   "name": "Eastwood",
+   "lat": 33.4105,
+   "lon": -112.0026,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Durango Complex",
+   "lat": 33.4265,
+   "lon": -112.1181,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Phoenix JLG Supersite",
+   "lat": 33.5036,
+   "lon": -112.095,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Orange Grove",
+   "lat": 32.3226,
+   "lon": -111.0377,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Children's Park",
+   "lat": 32.2953,
+   "lon": -110.9822,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Green Valley",
+   "lat": 31.8794,
+   "lon": -110.9964,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Coachline",
+   "lat": 32.3806,
+   "lon": -111.1272,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Geronimo",
+   "lat": 32.25,
+   "lon": -110.9667,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Casa Grande Downtown",
+   "lat": 32.8776,
+   "lon": -111.7522,
+   "ugm3": 0.8
+  },
+  {
+   "name": "Apache Junction",
+   "lat": 33.42,
+   "lon": -111.5042,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Nogales Post Office",
+   "lat": 31.3372,
+   "lon": -110.9367,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Yuma Supersite",
+   "lat": 32.6903,
+   "lon": -114.6144,
+   "ugm3": 3.7
+  },
+  {
+   "name": "MARION",
+   "lat": 35.1972,
+   "lon": -90.1932,
+   "ugm3": 12.4
+  },
+  {
+   "name": "PARR",
+   "lat": 34.7561,
+   "lon": -92.281,
+   "ugm3": 14.5
+  },
+  {
+   "name": "ADEQ-DSR",
+   "lat": 34.6812,
+   "lon": -92.3285,
+   "ugm3": 26.1
+  },
+  {
+   "name": "SPRNGDLE",
+   "lat": 36.1797,
+   "lon": -94.1166,
+   "ugm3": 29.2
+  },
+  {
+   "name": "Oakland",
+   "lat": 37.7431,
+   "lon": -122.1699,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Oakland West",
+   "lat": 37.8148,
+   "lon": -122.2824,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Berkeley Aquatic Park",
+   "lat": 37.8648,
+   "lon": -122.3027,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Gridley",
+   "lat": 39.3276,
+   "lon": -121.6688,
+   "ugm3": 3.0
+  },
+  {
+   "name": "San Andreas",
+   "lat": 38.2019,
+   "lon": -120.6803,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Colusa - Sunrise Blvd.",
+   "lat": 39.1892,
+   "lon": -121.9989,
+   "ugm3": 6.5
+  },
+  {
+   "name": "Concord",
+   "lat": 37.9383,
+   "lon": -122.025,
+   "ugm3": 2.0
+  },
+  {
+   "name": "San Pablo - Rumrill",
+   "lat": 37.9604,
+   "lon": -122.3571,
+   "ugm3": 12.0
+  },
+  {
+   "name": "Fresno - Garland",
+   "lat": 36.7854,
+   "lon": -119.7732,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Huron",
+   "lat": 36.1994,
+   "lon": -120.0991,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Tranquillity",
+   "lat": 36.6324,
+   "lon": -120.3822,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Fresno-Foundry Park",
+   "lat": 36.7109,
+   "lon": -119.7774,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Clovis - N. Villa Ave",
+   "lat": 36.8192,
+   "lon": -119.7164,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Willows-Colusa",
+   "lat": 39.5339,
+   "lon": -122.1908,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Calexico - Ethel Street",
+   "lat": 32.6762,
+   "lon": -115.4831,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Brawley - 220 Main Street",
+   "lat": 32.9783,
+   "lon": -115.5383,
+   "ugm3": 16.6
+  },
+  {
+   "name": "El Centro - 9th Street",
+   "lat": 32.7917,
+   "lon": -115.5617,
+   "ugm3": 19.7
+  },
+  {
+   "name": "NCORE - Bishop",
+   "lat": 37.3607,
+   "lon": -118.3308,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Keeler",
+   "lat": 36.4878,
+   "lon": -117.871,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Big Pine-CA",
+   "lat": 37.1555,
+   "lon": -118.2936,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Bakersfield - Golden State Highway",
+   "lat": 35.3853,
+   "lon": -119.0147,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Bakersfield - California Ave",
+   "lat": 35.3566,
+   "lon": -119.0626,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Lebec",
+   "lat": 34.8416,
+   "lon": -118.8647,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Corcoran",
+   "lat": 36.1022,
+   "lon": -119.566,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Hanford - S. Irwin Street",
+   "lat": 36.3144,
+   "lon": -119.6436,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Glendora - Laurel",
+   "lat": 34.1439,
+   "lon": -117.8508,
+   "ugm3": 6.5
+  },
+  {
+   "name": "Los Angeles - N. Main Street",
+   "lat": 34.0664,
+   "lon": -118.2268,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Reseda",
+   "lat": 34.1992,
+   "lon": -118.5331,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Compton",
+   "lat": 33.9014,
+   "lon": -118.205,
+   "ugm3": 8.2
+  },
+  {
+   "name": "Santa Clarita",
+   "lat": 34.3833,
+   "lon": -118.5283,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Madera-City",
+   "lat": 36.9533,
+   "lon": -120.0341,
+   "ugm3": 1.0
+  },
+  {
+   "name": "San Rafael",
+   "lat": 37.9722,
+   "lon": -122.5189,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Yosemite Village - Visitor Center",
+   "lat": 37.7487,
+   "lon": -119.5871,
+   "ugm3": 1.1
+  },
+  {
+   "name": "Ukiah Library",
+   "lat": 39.1505,
+   "lon": -123.2065,
+   "ugm3": 1.6
+  },
+  {
+   "name": "Lee Vining",
+   "lat": 37.9621,
+   "lon": -119.1203,
+   "ugm3": 0.5
+  },
+  {
+   "name": "Carmel Valley AMS",
+   "lat": 36.4819,
+   "lon": -121.7333,
+   "ugm3": 7.0
+  },
+  {
+   "name": "King City AMS",
+   "lat": 36.209,
+   "lon": -121.126,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Salinas AMS",
+   "lat": 36.6943,
+   "lon": -121.6233,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Truckee BAM",
+   "lat": 39.3279,
+   "lon": -120.1846,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Anaheim",
+   "lat": 33.8306,
+   "lon": -117.9385,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Mission Viejo",
+   "lat": 33.63,
+   "lon": -117.6759,
+   "ugm3": 8.7
+  },
+  {
+   "name": "Colfax",
+   "lat": 39.1003,
+   "lon": -120.9528,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Roseville - N.Sunrise/Douglas",
+   "lat": 38.7464,
+   "lon": -121.265,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Tahoe City",
+   "lat": 39.166,
+   "lon": -120.1488,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Quincy",
+   "lat": 39.9395,
+   "lon": -120.9443,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Portola",
+   "lat": 39.8134,
+   "lon": -120.4707,
+   "ugm3": 0.5
+  },
+  {
+   "name": "Banning - South Hathaway Street",
+   "lat": 33.9208,
+   "lon": -116.8584,
+   "ugm3": 0.9
+  },
+  {
+   "name": "Temecula (Lake Skinner)",
+   "lat": 33.5831,
+   "lon": -117.0722,
+   "ugm3": 7.1
+  },
+  {
+   "name": "Riverside - Rubidoux",
+   "lat": 33.9994,
+   "lon": -117.4158,
+   "ugm3": 7.8
+  },
+  {
+   "name": "Mira Loma - Van Buren",
+   "lat": 33.9964,
+   "lon": -117.4925,
+   "ugm3": 11.6
+  },
+  {
+   "name": "Lake Elsinore - W. Flint Street",
+   "lat": 33.6765,
+   "lon": -117.331,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Arden Arcade - Del Paso Manor",
+   "lat": 38.6138,
+   "lon": -121.368,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Downtown Sacramento - T Street",
+   "lat": 38.5684,
+   "lon": -121.4931,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Elk Grove",
+   "lat": 38.3026,
+   "lon": -121.4208,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Folsom",
+   "lat": 38.6833,
+   "lon": -121.1645,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Bercut Dr",
+   "lat": 38.5933,
+   "lon": -121.5037,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Sloughhouse",
+   "lat": 38.4945,
+   "lon": -121.2111,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Hollister AMS",
+   "lat": 36.8434,
+   "lon": -121.3621,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Crestline - Lake Gregory",
+   "lat": 34.2431,
+   "lon": -117.2723,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Victorville - Park Avenue",
+   "lat": 34.511,
+   "lon": -117.3256,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Fontana - Arrow Highway",
+   "lat": 34.1001,
+   "lon": -117.492,
+   "ugm3": 15.6
+  },
+  {
+   "name": "Chula Vista",
+   "lat": 32.6312,
+   "lon": -117.0591,
+   "ugm3": 0.2
+  },
+  {
+   "name": "Alpine",
+   "lat": 32.8423,
+   "lon": -116.7683,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Camp Pendleton",
+   "lat": 33.217,
+   "lon": -117.3962,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Otay Mesa - Donovan",
+   "lat": 32.5794,
+   "lon": -116.9295,
+   "ugm3": 3.8
+  },
+  {
+   "name": "San Diego - Kearny Villa Rd.",
+   "lat": 32.8455,
+   "lon": -117.1239,
+   "ugm3": 5.1
+  },
+  {
+   "name": "El Cajon - Lexington Elementary School",
+   "lat": 32.7896,
+   "lon": -116.9442,
+   "ugm3": 3.3
+  },
+  {
+   "name": "San Francisco",
+   "lat": 37.7658,
+   "lon": -122.3978,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Manteca",
+   "lat": 37.8027,
+   "lon": -121.2208,
+   "ugm3": 0.6
+  },
+  {
+   "name": "Mesa 2",
+   "lat": 35.0208,
+   "lon": -120.5639,
+   "ugm3": 5.0
+  },
+  {
+   "name": "CDF",
+   "lat": 35.0468,
+   "lon": -120.5878,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Atascadero",
+   "lat": 35.4946,
+   "lon": -120.6662,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Cambria Temporary PM2.5",
+   "lat": 35.5662,
+   "lon": -121.108,
+   "ugm3": 13.0
+  },
+  {
+   "name": "Redwood City",
+   "lat": 37.4828,
+   "lon": -122.2022,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Santa Ynez",
+   "lat": 34.6058,
+   "lon": -120.0751,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Gilroy - 9th Street",
+   "lat": 36.9996,
+   "lon": -121.5747,
+   "ugm3": 3.0
+  },
+  {
+   "name": "San Jose - Jackson St.",
+   "lat": 37.3483,
+   "lon": -121.8947,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Santa Cruz AMS",
+   "lat": 36.9833,
+   "lon": -121.9882,
+   "ugm3": 4.0
+  },
+  {
+   "name": "SLV Middle School AMS",
+   "lat": 37.0607,
+   "lon": -122.0835,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Redding",
+   "lat": 40.5497,
+   "lon": -122.3792,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Yreka",
+   "lat": 41.7268,
+   "lon": -122.6336,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Vallejo",
+   "lat": 38.1025,
+   "lon": -122.238,
+   "ugm3": 8.0
+  },
+  {
+   "name": "Sebastopol",
+   "lat": 38.4038,
+   "lon": -122.8183,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Turlock - S. Minaret Street",
+   "lat": 37.4883,
+   "lon": -120.8358,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Yuba City",
+   "lat": 39.1387,
+   "lon": -121.6188,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Red Bluff - Walnut office",
+   "lat": 40.1709,
+   "lon": -122.2557,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Sequoia and Kings Canyon - Ash Mountain",
+   "lat": 36.4894,
+   "lon": -118.8269,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Porterville-NFS",
+   "lat": 36.0319,
+   "lon": -119.055,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Piru - Pacific",
+   "lat": 34.4043,
+   "lon": -118.81,
+   "ugm3": 10.0
+  },
+  {
+   "name": "Ojai - Ojai Ave.",
+   "lat": 34.4481,
+   "lon": -119.2313,
+   "ugm3": 8.0
+  },
+  {
+   "name": "Simi Valley - Cochran Street",
+   "lat": 34.2763,
+   "lon": -118.6837,
+   "ugm3": 1.0
+  },
+  {
+   "name": "El Rio - Rio Mesa School #2",
+   "lat": 34.2524,
+   "lon": -119.1432,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Davis - UCD Campus",
+   "lat": 38.5346,
+   "lon": -121.7734,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Longmont",
+   "lat": 40.1646,
+   "lon": -105.1009,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Boulder - CU - 2102 Athens St.",
+   "lat": 40.0128,
+   "lon": -105.2667,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Delta",
+   "lat": 38.7392,
+   "lon": -108.0731,
+   "ugm3": 1.7
+  },
+  {
+   "name": "Denver - CAMP - 2105 Broadway",
+   "lat": 39.7511,
+   "lon": -104.9872,
+   "ugm3": 4.9
+  },
+  {
+   "name": "La Casa NCORE - 4545 Navajo St.",
+   "lat": 39.7794,
+   "lon": -105.0052,
+   "ugm3": 4.7
+  },
+  {
+   "name": "I25 Denver",
+   "lat": 39.7321,
+   "lon": -105.0153,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Globeville",
+   "lat": 39.7856,
+   "lon": -104.9885,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Chatfield Park - 11500 N. Roxborough Park Rd.",
+   "lat": 39.5339,
+   "lon": -105.07,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Colorado College",
+   "lat": 38.848,
+   "lon": -104.8286,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Ute 1",
+   "lat": 37.1368,
+   "lon": -107.6286,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Ute 3",
+   "lat": 37.1026,
+   "lon": -107.8702,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Yellow Brick Building",
+   "lat": 39.193,
+   "lon": -106.8232,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Greeley Hospital",
+   "lat": 40.4147,
+   "lon": -104.7061,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Bridgeport",
+   "lat": 41.1714,
+   "lon": -73.1953,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Danbury",
+   "lat": 41.4014,
+   "lon": -73.4447,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Hartford",
+   "lat": 41.7714,
+   "lon": -72.6799,
+   "ugm3": 2.3
+  },
+  {
+   "name": "East Hartford",
+   "lat": 41.7847,
+   "lon": -72.6297,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Cornwall",
+   "lat": 41.8331,
+   "lon": -73.3033,
+   "ugm3": 2.9
+  },
+  {
+   "name": "New Haven",
+   "lat": 41.3013,
+   "lon": -72.9027,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Waterbury",
+   "lat": 41.5503,
+   "lon": -73.0442,
+   "ugm3": 2.2
+  },
+  {
+   "name": "Groton",
+   "lat": 41.3536,
+   "lon": -72.0789,
+   "ugm3": 3.2
+  },
+  {
+   "name": "KILLENS",
+   "lat": 38.9867,
+   "lon": -75.5568,
+   "ugm3": 4.5
+  },
+  {
+   "name": "RIVER ROAD PARK; BELLEFONTE",
+   "lat": 39.7611,
+   "lon": -75.4919,
+   "ugm3": 5.2
+  },
+  {
+   "name": "LUMS 2",
+   "lat": 39.5513,
+   "lon": -75.732,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Rte 9 Del. City",
+   "lat": 39.5777,
+   "lon": -75.6036,
+   "ugm3": 5.1
+  },
+  {
+   "name": "MLK",
+   "lat": 39.7394,
+   "lon": -75.5581,
+   "ugm3": 4.9
+  },
+  {
+   "name": "RIVER_Terrace",
+   "lat": 38.8957,
+   "lon": -76.9581,
+   "ugm3": 0.4
+  },
+  {
+   "name": "McMillan Reservoir",
+   "lat": 38.9218,
+   "lon": -77.0132,
+   "ugm3": 1.0
+  },
+  {
+   "name": "DCNearRoad",
+   "lat": 38.8947,
+   "lon": -76.9534,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Osceola National Forest",
+   "lat": 30.1972,
+   "lon": -82.445,
+   "ugm3": 4.0
+  },
+  {
+   "name": "St. Andrews Park",
+   "lat": 30.1289,
+   "lon": -85.7381,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Melbourne",
+   "lat": 28.0542,
+   "lon": -80.6283,
+   "ugm3": 2.5
+  },
+  {
+   "name": "NCORE",
+   "lat": 26.054,
+   "lon": -80.2576,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Near Road",
+   "lat": 26.1313,
+   "lon": -80.1678,
+   "ugm3": 8.5
+  },
+  {
+   "name": "POMPANO_BEACH",
+   "lat": 26.2906,
+   "lon": -80.0969,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Crystal River Preserve",
+   "lat": 28.9584,
+   "lon": -82.6431,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Laurel Oaks Elementary",
+   "lat": 26.2992,
+   "lon": -81.72,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Lake City",
+   "lat": 30.1783,
+   "lon": -82.6192,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Kooker Park",
+   "lat": 30.3561,
+   "lon": -81.6356,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Sheffield Elementary School",
+   "lat": 30.4758,
+   "lon": -81.5869,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Mayo Clinic",
+   "lat": 30.2603,
+   "lon": -81.4533,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Pepsi Place",
+   "lat": 30.2628,
+   "lon": -81.6068,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Ellyson Industrial Park",
+   "lat": 30.525,
+   "lon": -87.2044,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Pensacola NAS",
+   "lat": 30.3681,
+   "lon": -87.2708,
+   "ugm3": 3.5
+  },
+  {
+   "name": "MUNRO STREET",
+   "lat": 27.9551,
+   "lon": -82.4695,
+   "ugm3": 1.7
+  },
+  {
+   "name": "GANDY",
+   "lat": 27.8928,
+   "lon": -82.5383,
+   "ugm3": 1.8
+  },
+  {
+   "name": "SYDNEY",
+   "lat": 27.9659,
+   "lon": -82.2306,
+   "ugm3": 2.2
+  },
+  {
+   "name": "Bonifay",
+   "lat": 30.8475,
+   "lon": -85.6044,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Winkler Pump Station",
+   "lat": 26.6028,
+   "lon": -81.8789,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Tallahassee Community College",
+   "lat": 30.4397,
+   "lon": -84.3483,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Stuart",
+   "lat": 27.1725,
+   "lon": -80.2407,
+   "ugm3": 3.6
+  },
+  {
+   "name": "I-4 Near-Road",
+   "lat": 28.5346,
+   "lon": -81.3844,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Osceola Co. Fire Station - Four Corners",
+   "lat": 28.3478,
+   "lon": -81.6367,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Clearwater",
+   "lat": 27.9711,
+   "lon": -82.7361,
+   "ugm3": 1.9
+  },
+  {
+   "name": "John A. Chesnut Sr. Park",
+   "lat": 28.0903,
+   "lon": -82.7008,
+   "ugm3": 1.5
+  },
+  {
+   "name": "Bee Ridge",
+   "lat": 27.2906,
+   "lon": -82.5072,
+   "ugm3": 1.7
+  },
+  {
+   "name": "Jackson Road",
+   "lat": 27.0892,
+   "lon": -82.3625,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Seminole Community College (AG COMP)",
+   "lat": 28.7456,
+   "lon": -81.31,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Blind Services; 1185-A Dunn Ave",
+   "lat": 29.2069,
+   "lon": -81.0531,
+   "ugm3": 2.8
+  },
+  {
+   "name": "St. Marks Wildlife Refuge",
+   "lat": 30.0842,
+   "lon": -84.1617,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Savannah L&A",
+   "lat": 32.0903,
+   "lon": -81.1306,
+   "ugm3": 9.7
+  },
+  {
+   "name": "Athens",
+   "lat": 33.925,
+   "lon": -83.3575,
+   "ugm3": 9.6
+  },
+  {
+   "name": "South DeKalb",
+   "lat": 33.6906,
+   "lon": -84.2731,
+   "ugm3": 10.3
+  },
+  {
+   "name": "Albany",
+   "lat": 31.5767,
+   "lon": -84.1002,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Rome",
+   "lat": 34.2605,
+   "lon": -85.3233,
+   "ugm3": 0.5
+  },
+  {
+   "name": "United Ave",
+   "lat": 33.7206,
+   "lon": -84.3578,
+   "ugm3": 9.8
+  },
+  {
+   "name": "NR-Georgia Tech",
+   "lat": 33.7783,
+   "lon": -84.3914,
+   "ugm3": 12.5
+  },
+  {
+   "name": "Brunswick",
+   "lat": 31.1694,
+   "lon": -81.4964,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Gwinnett Tech",
+   "lat": 33.9636,
+   "lon": -84.0664,
+   "ugm3": 8.6
+  },
+  {
+   "name": "Gainesville",
+   "lat": 34.3003,
+   "lon": -83.8139,
+   "ugm3": 10.5
+  },
+  {
+   "name": "McDonough",
+   "lat": 33.4347,
+   "lon": -84.1617,
+   "ugm3": 6.6
+  },
+  {
+   "name": "Warner Robins",
+   "lat": 32.6056,
+   "lon": -83.5979,
+   "ugm3": 9.0
+  },
+  {
+   "name": "Valdosta",
+   "lat": 30.8486,
+   "lon": -83.2933,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Augusta",
+   "lat": 33.4333,
+   "lon": -82.0219,
+   "ugm3": 9.9
+  },
+  {
+   "name": "White Pine",
+   "lat": 43.5776,
+   "lon": -116.1782,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Pocatello Garrett and Gould",
+   "lat": 42.8767,
+   "lon": -112.4603,
+   "ugm3": 3.0
+  },
+  {
+   "name": "St. Maries",
+   "lat": 47.3167,
+   "lon": -116.5703,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Ketchum",
+   "lat": 43.6826,
+   "lon": -114.3711,
+   "ugm3": 1.2
+  },
+  {
+   "name": "Idaho City",
+   "lat": 43.823,
+   "lon": -115.8386,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Garden Valley",
+   "lat": 44.1045,
+   "lon": -115.9724,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Idaho Falls PM2.5",
+   "lat": 43.4647,
+   "lon": -112.0465,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Porthill",
+   "lat": 48.9959,
+   "lon": -116.51,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Mt Hall",
+   "lat": 48.894,
+   "lon": -116.3594,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Grangeville",
+   "lat": 45.9313,
+   "lon": -116.1152,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Cottonwood",
+   "lat": 46.0613,
+   "lon": -116.3467,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Moscow",
+   "lat": 46.7282,
+   "lon": -116.9546,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Juliaetta",
+   "lat": 46.5787,
+   "lon": -116.709,
+   "ugm3": 6.8
+  },
+  {
+   "name": "Salmon PM2.5",
+   "lat": 45.1819,
+   "lon": -113.8903,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Lewiston",
+   "lat": 46.4085,
+   "lon": -116.9914,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Pinehurst",
+   "lat": 47.5367,
+   "lon": -116.2369,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Twin Falls PM25",
+   "lat": 42.5651,
+   "lon": -114.4947,
+   "ugm3": 8.0
+  },
+  {
+   "name": "McCall",
+   "lat": 44.8902,
+   "lon": -116.1065,
+   "ugm3": 7.5
+  },
+  {
+   "name": "BONDVILLE",
+   "lat": 40.0522,
+   "lon": -88.3725,
+   "ugm3": 6.5
+  },
+  {
+   "name": "ALSIP",
+   "lat": 41.6708,
+   "lon": -87.7325,
+   "ugm3": 4.5
+  },
+  {
+   "name": "CHI_WASH",
+   "lat": 41.6878,
+   "lon": -87.5389,
+   "ugm3": 4.7
+  },
+  {
+   "name": "CHI_SP",
+   "lat": 41.9136,
+   "lon": -87.7239,
+   "ugm3": 3.5
+  },
+  {
+   "name": "CHI_COM",
+   "lat": 41.7547,
+   "lon": -87.7136,
+   "ugm3": 4.6
+  },
+  {
+   "name": "SCHILPRK",
+   "lat": 41.965,
+   "lon": -87.8761,
+   "ugm3": 4.8
+  },
+  {
+   "name": "DESPLNS",
+   "lat": 42.0603,
+   "lon": -87.8631,
+   "ugm3": 3.8
+  },
+  {
+   "name": "NORTHBRK",
+   "lat": 42.1406,
+   "lon": -87.7994,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Cicero Liberty",
+   "lat": 41.8643,
+   "lon": -87.7488,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Naperville",
+   "lat": 41.7714,
+   "lon": -88.1522,
+   "ugm3": 10.7
+  },
+  {
+   "name": "KNIGHT_P",
+   "lat": 38.0889,
+   "lon": -88.625,
+   "ugm3": 6.9
+  },
+  {
+   "name": "JERSEYVL",
+   "lat": 39.1014,
+   "lon": -90.3445,
+   "ugm3": 5.1
+  },
+  {
+   "name": "CARY",
+   "lat": 42.2211,
+   "lon": -88.2411,
+   "ugm3": 5.6
+  },
+  {
+   "name": "NORMAL",
+   "lat": 40.5169,
+   "lon": -88.9975,
+   "ugm3": 6.0
+  },
+  {
+   "name": "DECATUR",
+   "lat": 39.8669,
+   "lon": -88.9256,
+   "ugm3": 6.2
+  },
+  {
+   "name": "Granite City Fire Station",
+   "lat": 38.7045,
+   "lon": -90.1397,
+   "ugm3": 8.0
+  },
+  {
+   "name": "Wood_River",
+   "lat": 38.8606,
+   "lon": -90.1058,
+   "ugm3": 7.1
+  },
+  {
+   "name": "HOUSTON",
+   "lat": 38.1761,
+   "lon": -89.7883,
+   "ugm3": 7.0
+  },
+  {
+   "name": "ROCK_IS",
+   "lat": 41.5144,
+   "lon": -90.5172,
+   "ugm3": 6.1
+  },
+  {
+   "name": "East St. Louis",
+   "lat": 38.6119,
+   "lon": -90.1606,
+   "ugm3": 8.7
+  },
+  {
+   "name": "Springfield Ag",
+   "lat": 39.8319,
+   "lon": -89.6442,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Joliet",
+   "lat": 41.5269,
+   "lon": -88.1165,
+   "ugm3": 6.7
+  },
+  {
+   "name": "BRAIDWD",
+   "lat": 41.2222,
+   "lon": -88.1906,
+   "ugm3": 7.1
+  },
+  {
+   "name": "Columbus - Rocky Ford Rd",
+   "lat": 39.2375,
+   "lon": -85.8913,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Elkhart-Prairie St.",
+   "lat": 41.6572,
+   "lon": -85.9684,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Plummer",
+   "lat": 38.9856,
+   "lon": -86.99,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Fishers",
+   "lat": 39.9609,
+   "lon": -85.9395,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Mechanicsburg",
+   "lat": 40.0095,
+   "lon": -85.5235,
+   "ugm3": 7.9
+  },
+  {
+   "name": "Kokomo - E. Vaile Ave.",
+   "lat": 40.4813,
+   "lon": -86.1097,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Gary-IITRI",
+   "lat": 41.6066,
+   "lon": -87.305,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Hammond-167th St",
+   "lat": 41.5944,
+   "lon": -87.495,
+   "ugm3": 5.7
+  },
+  {
+   "name": "Anderson-Eastside Elem. Sch",
+   "lat": 40.1257,
+   "lon": -85.6521,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Indpls-Washington Park",
+   "lat": 39.8108,
+   "lon": -86.1144,
+   "ugm3": 5.2
+  },
+  {
+   "name": "Indpls-W.18th St",
+   "lat": 39.7889,
+   "lon": -86.2147,
+   "ugm3": 6.4
+  },
+  {
+   "name": "Indpls - I-70 E",
+   "lat": 39.7879,
+   "lon": -86.1309,
+   "ugm3": 6.2
+  },
+  {
+   "name": "Bloomington - Binford",
+   "lat": 39.1594,
+   "lon": -86.5047,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Ogden Dunes",
+   "lat": 41.6178,
+   "lon": -87.1995,
+   "ugm3": 4.8
+  },
+  {
+   "name": "South Bend-Shields Dr",
+   "lat": 41.6967,
+   "lon": -86.2147,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Lafayette-Greenbush St",
+   "lat": 40.4317,
+   "lon": -86.8525,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Evansville-Buena Vista",
+   "lat": 38.0132,
+   "lon": -87.5779,
+   "ugm3": 5.4
+  },
+  {
+   "name": "Terre Haute-Lafayette Ave",
+   "lat": 39.486,
+   "lon": -87.4013,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Larwill",
+   "lat": 41.1697,
+   "lon": -85.6294,
+   "ugm3": 6.8
+  },
+  {
+   "name": "Waterloo, Water Tower",
+   "lat": 42.5014,
+   "lon": -92.3158,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Clinton, Chancy Park",
+   "lat": 41.8231,
+   "lon": -90.2119,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Iowa City, Hoover School",
+   "lat": 41.6582,
+   "lon": -91.5035,
+   "ugm3": 7.4
+  },
+  {
+   "name": "PUBLIC HEALTH",
+   "lat": 41.9767,
+   "lon": -91.6878,
+   "ugm3": 5.8
+  },
+  {
+   "name": "Viking Lake State Park",
+   "lat": 40.97,
+   "lon": -95.045,
+   "ugm3": 8.0
+  },
+  {
+   "name": "Muscatine, High School East Campus",
+   "lat": 41.4014,
+   "lon": -91.0684,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Emmetsburg, ILCC",
+   "lat": 43.1233,
+   "lon": -94.6933,
+   "ugm3": 1.0
+  },
+  {
+   "name": "CARPENTER",
+   "lat": 41.6031,
+   "lon": -93.6433,
+   "ugm3": 9.1
+  },
+  {
+   "name": "Davenport, 10th & Vine",
+   "lat": 41.53,
+   "lon": -90.5875,
+   "ugm3": 5.6
+  },
+  {
+   "name": "Heritage Park",
+   "lat": 38.8386,
+   "lon": -94.7464,
+   "ugm3": 8.1
+  },
+  {
+   "name": "Chanute",
+   "lat": 37.677,
+   "lon": -95.4759,
+   "ugm3": 4.4
+  },
+  {
+   "name": "WHlthDpt",
+   "lat": 37.7011,
+   "lon": -97.3139,
+   "ugm3": 8.4
+  },
+  {
+   "name": "KNI-Topeka",
+   "lat": 39.0242,
+   "lon": -95.7114,
+   "ugm3": 10.0
+  },
+  {
+   "name": "Goodland",
+   "lat": 39.3428,
+   "lon": -101.703,
+   "ugm3": 5.8
+  },
+  {
+   "name": "PECK",
+   "lat": 37.4769,
+   "lon": -97.3664,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Cedar Bluff",
+   "lat": 38.7703,
+   "lon": -99.7636,
+   "ugm3": 6.7
+  },
+  {
+   "name": "WY/KC",
+   "lat": 39.1175,
+   "lon": -94.6356,
+   "ugm3": 9.1
+  },
+  {
+   "name": "MIDAIR",
+   "lat": 36.6081,
+   "lon": -83.7369,
+   "ugm3": 5.3
+  },
+  {
+   "name": "FIVCO",
+   "lat": 38.4592,
+   "lon": -82.6339,
+   "ugm3": 3.7
+  },
+  {
+   "name": "NKU",
+   "lat": 39.0217,
+   "lon": -84.4744,
+   "ugm3": 4.0
+  },
+  {
+   "name": "GRAYSON",
+   "lat": 38.2383,
+   "lon": -82.9883,
+   "ugm3": 5.9
+  },
+  {
+   "name": "NEWTWN",
+   "lat": 38.065,
+   "lon": -84.5,
+   "ugm3": 4.6
+  },
+  {
+   "name": "WATSON",
+   "lat": 38.0608,
+   "lon": -85.8961,
+   "ugm3": 6.4
+  },
+  {
+   "name": "Cannons Lane",
+   "lat": 38.2286,
+   "lon": -85.6544,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Near Road",
+   "lat": 38.1935,
+   "lon": -85.7121,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Carrithers Middle School",
+   "lat": 38.1825,
+   "lon": -85.5744,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Algonquin Parkway",
+   "lat": 38.2316,
+   "lon": -85.8268,
+   "ugm3": 6.6
+  },
+  {
+   "name": "NICHVILL",
+   "lat": 37.8933,
+   "lon": -84.5892,
+   "ugm3": 6.0
+  },
+  {
+   "name": "HAZ2",
+   "lat": 37.2831,
+   "lon": -83.2203,
+   "ugm3": 5.5
+  },
+  {
+   "name": "PIKE2001",
+   "lat": 37.4828,
+   "lon": -82.5353,
+   "ugm3": 5.5
+  },
+  {
+   "name": "SOMERST",
+   "lat": 37.0978,
+   "lon": -84.6117,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Shreveport Airport",
+   "lat": 32.5364,
+   "lon": -93.7492,
+   "ugm3": 8.3
+  },
+  {
+   "name": "Westlake",
+   "lat": 30.2625,
+   "lon": -93.285,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Vinton",
+   "lat": 30.2278,
+   "lon": -93.5797,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Capitol",
+   "lat": 30.4622,
+   "lon": -91.1769,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Kenner",
+   "lat": 30.0411,
+   "lon": -90.2728,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Lafayette",
+   "lat": 30.2258,
+   "lon": -92.0428,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Thibodaux",
+   "lat": 29.7639,
+   "lon": -90.7653,
+   "ugm3": 4.8
+  },
+  {
+   "name": "French Settlement",
+   "lat": 30.315,
+   "lon": -90.8114,
+   "ugm3": 4.5
+  },
+  {
+   "name": "I-610 New Orleans Near Road",
+   "lat": 29.996,
+   "lon": -90.1182,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Monroe",
+   "lat": 32.5097,
+   "lon": -92.0461,
+   "ugm3": 10.3
+  },
+  {
+   "name": "Chalmette Vista",
+   "lat": 29.9431,
+   "lon": -89.9761,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Lewiston",
+   "lat": 44.0894,
+   "lon": -70.2141,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Madawaska PSB",
+   "lat": 47.3553,
+   "lon": -68.3211,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Presque Isle Regional Office",
+   "lat": 46.6984,
+   "lon": -68.0389,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Presque Isle Riverside",
+   "lat": 46.6823,
+   "lon": -68.0162,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Acadia NP - McFarland",
+   "lat": 44.377,
+   "lon": -68.2609,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Rumford",
+   "lat": 44.5514,
+   "lon": -70.5463,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Bangor MSS",
+   "lat": 44.8174,
+   "lon": -68.7728,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Padonia",
+   "lat": 39.462,
+   "lon": -76.6316,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Fair Hill",
+   "lat": 39.7011,
+   "lon": -75.86,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Horn Point",
+   "lat": 38.5876,
+   "lon": -76.1408,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Piney Run",
+   "lat": 39.7058,
+   "lon": -79.0119,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Edgewood",
+   "lat": 39.41,
+   "lon": -76.2967,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Howard County Near Road",
+   "lat": 39.1432,
+   "lon": -76.8462,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Millington",
+   "lat": 39.3052,
+   "lon": -75.7972,
+   "ugm3": 1.0
+  },
+  {
+   "name": "HU-Beltsville",
+   "lat": 39.0553,
+   "lon": -76.8783,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Hagerstown",
+   "lat": 39.5656,
+   "lon": -77.7219,
+   "ugm3": 2.0
+  },
+  {
+   "name": "North Adams",
+   "lat": 42.7022,
+   "lon": -73.1104,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Fall River",
+   "lat": 41.6833,
+   "lon": -71.1697,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Lynn",
+   "lat": 42.4747,
+   "lon": -70.9719,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Greenfield",
+   "lat": 42.6058,
+   "lon": -72.5967,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Chicopee",
+   "lat": 42.1944,
+   "lon": -72.5556,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Springfield",
+   "lat": 42.1202,
+   "lon": -72.585,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Brockton",
+   "lat": 42.0651,
+   "lon": -71.0127,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Boston - Kenmore Sq",
+   "lat": 42.3489,
+   "lon": -71.0977,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Boston - Roxbury",
+   "lat": 42.3294,
+   "lon": -71.0825,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Boston - Von Hillern St",
+   "lat": 42.3252,
+   "lon": -71.0561,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Worcester - Summer St",
+   "lat": 42.2639,
+   "lon": -71.7947,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Uxbridge",
+   "lat": 42.0997,
+   "lon": -71.62,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Bay City",
+   "lat": 43.5714,
+   "lon": -83.8908,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Lansing",
+   "lat": 42.7614,
+   "lon": -84.5629,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Kalamazoo",
+   "lat": 42.2781,
+   "lon": -85.5419,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Grand Rapids - Monroe",
+   "lat": 42.9847,
+   "lon": -85.6711,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Tecumseh",
+   "lat": 41.9956,
+   "lon": -83.9467,
+   "ugm3": 4.5
+  },
+  {
+   "name": "New Haven",
+   "lat": 42.7314,
+   "lon": -82.7936,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Little River Band-Manistee",
+   "lat": 44.3069,
+   "lon": -86.2428,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Houghton Lake",
+   "lat": 44.3106,
+   "lon": -84.8919,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Oak Park",
+   "lat": 42.4631,
+   "lon": -83.1833,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Jenison",
+   "lat": 42.8944,
+   "lon": -85.8528,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Port Huron",
+   "lat": 42.9533,
+   "lon": -82.4564,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Seney",
+   "lat": 46.2889,
+   "lon": -85.9503,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Ypsilanti",
+   "lat": 42.24,
+   "lon": -83.5997,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Allen Park",
+   "lat": 42.2283,
+   "lon": -83.2092,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Detroit-Southwest",
+   "lat": 42.3042,
+   "lon": -83.1072,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Detroit-E7 Mile",
+   "lat": 42.4308,
+   "lon": -83.0008,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Dearborn",
+   "lat": 42.3075,
+   "lon": -83.15,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Eliza Howell - Near Roadway",
+   "lat": 42.386,
+   "lon": -83.2663,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Detroit-NMH48217",
+   "lat": 42.2617,
+   "lon": -83.1579,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Detroit-DP4th",
+   "lat": 42.3122,
+   "lon": -83.0919,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Detroit-Trinity",
+   "lat": 42.2958,
+   "lon": -83.1294,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Detroit-Military Park",
+   "lat": 42.3121,
+   "lon": -83.1035,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Blaine",
+   "lat": 45.1425,
+   "lon": -93.2139,
+   "ugm3": 5.8
+  },
+  {
+   "name": "Detroit Lakes",
+   "lat": 46.8511,
+   "lon": -95.8467,
+   "ugm3": 7.4
+  },
+  {
+   "name": "Red Lake Nation Hospital",
+   "lat": 47.8782,
+   "lon": -95.0292,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Fond du Lac",
+   "lat": 46.7137,
+   "lon": -92.5117,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Leech Lake Nation: Cass Lake",
+   "lat": 47.3844,
+   "lon": -94.6017,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Grand Portage",
+   "lat": 47.9721,
+   "lon": -89.6908,
+   "ugm3": 5.1
+  },
+  {
+   "name": "Brainerd",
+   "lat": 46.3944,
+   "lon": -94.1433,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Apple Valley",
+   "lat": 44.7383,
+   "lon": -93.2372,
+   "ugm3": 6.2
+  },
+  {
+   "name": "Lakeville - Near Road",
+   "lat": 44.7061,
+   "lon": -93.2858,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Minneapolis - Lowry Ave",
+   "lat": 45.0121,
+   "lon": -93.2767,
+   "ugm3": 6.9
+  },
+  {
+   "name": "Minneapolis - Pacific St",
+   "lat": 45.0083,
+   "lon": -93.277,
+   "ugm3": 6.7
+  },
+  {
+   "name": "Minneapolis - Near Road",
+   "lat": 44.9653,
+   "lon": -93.2551,
+   "ugm3": 17.1
+  },
+  {
+   "name": "Minneapolis - Andersen School",
+   "lat": 44.9536,
+   "lon": -93.2581,
+   "ugm3": 6.2
+  },
+  {
+   "name": "Minneapolis - East Phillips Community",
+   "lat": 44.9521,
+   "lon": -93.2443,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Ely",
+   "lat": 47.9464,
+   "lon": -91.4953,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Marshall",
+   "lat": 44.4572,
+   "lon": -95.835,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Rochester",
+   "lat": 43.9947,
+   "lon": -92.4497,
+   "ugm3": 4.9
+  },
+  {
+   "name": "St. Paul-Harding H.S.",
+   "lat": 44.9594,
+   "lon": -93.0356,
+   "ugm3": 5.6
+  },
+  {
+   "name": "Virginia",
+   "lat": 47.5212,
+   "lon": -92.5393,
+   "ugm3": 6.4
+  },
+  {
+   "name": "Duluth-WDSE",
+   "lat": 46.8183,
+   "lon": -92.0892,
+   "ugm3": 6.4
+  },
+  {
+   "name": "West Duluth",
+   "lat": 46.7439,
+   "lon": -92.1669,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Shakopee",
+   "lat": 44.7894,
+   "lon": -93.5125,
+   "ugm3": 5.8
+  },
+  {
+   "name": "St. Cloud",
+   "lat": 45.55,
+   "lon": -94.1333,
+   "ugm3": 7.3
+  },
+  {
+   "name": "St. Michael",
+   "lat": 45.2108,
+   "lon": -93.6686,
+   "ugm3": 6.8
+  },
+  {
+   "name": "CLEVELAND",
+   "lat": 33.7508,
+   "lon": -90.7342,
+   "ugm3": 12.0
+  },
+  {
+   "name": "HERNANDO",
+   "lat": 34.8206,
+   "lon": -89.9878,
+   "ugm3": 13.1
+  },
+  {
+   "name": "Hattiesburg",
+   "lat": 31.324,
+   "lon": -89.2922,
+   "ugm3": 6.8
+  },
+  {
+   "name": "WAVELAND",
+   "lat": 30.3009,
+   "lon": -89.396,
+   "ugm3": 4.0
+  },
+  {
+   "name": "GPORT YC",
+   "lat": 30.3901,
+   "lon": -89.0497,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Jackson NCORE",
+   "lat": 32.329,
+   "lon": -90.1827,
+   "ugm3": 6.2
+  },
+  {
+   "name": "Hinds CC",
+   "lat": 32.3467,
+   "lon": -90.2258,
+   "ugm3": 8.5
+  },
+  {
+   "name": "PASCAGOULA",
+   "lat": 30.3781,
+   "lon": -88.5339,
+   "ugm3": 3.9
+  },
+  {
+   "name": "St. Joseph",
+   "lat": 39.7417,
+   "lon": -94.8583,
+   "ugm3": 8.1
+  },
+  {
+   "name": "RG_South",
+   "lat": 38.7596,
+   "lon": -94.5798,
+   "ugm3": 6.5
+  },
+  {
+   "name": "El Do Springs",
+   "lat": 37.701,
+   "lon": -94.0347,
+   "ugm3": 5.9
+  },
+  {
+   "name": "Liberty",
+   "lat": 39.3031,
+   "lon": -94.3764,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Hillcrest HS",
+   "lat": 37.2561,
+   "lon": -93.2997,
+   "ugm3": 5.6
+  },
+  {
+   "name": "Troost",
+   "lat": 39.1046,
+   "lon": -94.5705,
+   "ugm3": 11.3
+  },
+  {
+   "name": "Arnold West",
+   "lat": 38.4486,
+   "lon": -90.3984,
+   "ugm3": 7.7
+  },
+  {
+   "name": "Ladue",
+   "lat": 38.6503,
+   "lon": -90.3505,
+   "ugm3": 6.2
+  },
+  {
+   "name": "South Broadway",
+   "lat": 38.5425,
+   "lon": -90.2636,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Blair Street",
+   "lat": 38.6564,
+   "lon": -90.1985,
+   "ugm3": 5.1
+  },
+  {
+   "name": "Branch Street",
+   "lat": 38.6564,
+   "lon": -90.1898,
+   "ugm3": 5.6
+  },
+  {
+   "name": "Forest Park",
+   "lat": 38.6311,
+   "lon": -90.2811,
+   "ugm3": 11.3
+  },
+  {
+   "name": "Great Falls",
+   "lat": 47.4943,
+   "lon": -111.3033,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Lewistown",
+   "lat": 47.0485,
+   "lon": -109.4553,
+   "ugm3": 8.6
+  },
+  {
+   "name": "Columbia Falls",
+   "lat": 48.3637,
+   "lon": -114.1893,
+   "ugm3": 6.0
+  },
+  {
+   "name": "West Yellowstone",
+   "lat": 44.657,
+   "lon": -111.0896,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Sleeping Giant",
+   "lat": 46.8505,
+   "lon": -111.9872,
+   "ugm3": 0.1
+  },
+  {
+   "name": "Helena",
+   "lat": 46.6588,
+   "lon": -112.0131,
+   "ugm3": 1.6
+  },
+  {
+   "name": "Frenchtown",
+   "lat": 47.0129,
+   "lon": -114.2243,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Seeley Lake",
+   "lat": 47.1756,
+   "lon": -113.4762,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Malta",
+   "lat": 48.3175,
+   "lon": -107.8625,
+   "ugm3": 5.9
+  },
+  {
+   "name": "Hamilton",
+   "lat": 46.2436,
+   "lon": -114.1589,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Thompson Falls",
+   "lat": 47.5944,
+   "lon": -115.3237,
+   "ugm3": 6.7
+  },
+  {
+   "name": "Butte",
+   "lat": 46.0024,
+   "lon": -112.5009,
+   "ugm3": 1.3
+  },
+  {
+   "name": "Billings",
+   "lat": 45.8064,
+   "lon": -108.4266,
+   "ugm3": 8.6
+  },
+  {
+   "name": "NCORE",
+   "lat": 41.2474,
+   "lon": -95.9731,
+   "ugm3": 8.0
+  },
+  {
+   "name": "2912 Coffey",
+   "lat": 41.1333,
+   "lon": -95.9561,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Virgin Valley",
+   "lat": 36.8159,
+   "lon": -114.0503,
+   "ugm3": 1.3
+  },
+  {
+   "name": "Paul Meyer",
+   "lat": 36.1064,
+   "lon": -115.2533,
+   "ugm3": 1.4
+  },
+  {
+   "name": "Mountains Edge",
+   "lat": 36.0075,
+   "lon": -115.2631,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Walter Johnson",
+   "lat": 36.1698,
+   "lon": -115.263,
+   "ugm3": 1.3
+  },
+  {
+   "name": "Palo Verde",
+   "lat": 36.1734,
+   "lon": -115.3327,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Joe Neal",
+   "lat": 36.2706,
+   "lon": -115.2383,
+   "ugm3": 1.6
+  },
+  {
+   "name": "GreenValley",
+   "lat": 36.0487,
+   "lon": -115.0529,
+   "ugm3": 1.3
+  },
+  {
+   "name": "Liberty High School",
+   "lat": 35.9879,
+   "lon": -115.1488,
+   "ugm3": 1.5
+  },
+  {
+   "name": "Jerome Mack",
+   "lat": 36.1419,
+   "lon": -115.0787,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Sunrise Acres",
+   "lat": 36.164,
+   "lon": -115.1139,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Garrett Jr. High",
+   "lat": 35.9698,
+   "lon": -114.835,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Jean",
+   "lat": 35.7857,
+   "lon": -115.3571,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Walnut Rec.",
+   "lat": 36.2145,
+   "lon": -115.0914,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Toll",
+   "lat": 39.3998,
+   "lon": -119.7396,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Spanish Springs",
+   "lat": 39.6215,
+   "lon": -119.7187,
+   "ugm3": 4.0
+  },
+  {
+   "name": "CC_Armory",
+   "lat": 39.1448,
+   "lon": -119.7664,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Keene",
+   "lat": 42.9305,
+   "lon": -72.2723,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Lebanon",
+   "lat": 43.6296,
+   "lon": -72.3095,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Miller State Park",
+   "lat": 42.8618,
+   "lon": -71.8786,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Portsmouth",
+   "lat": 43.0754,
+   "lon": -70.748,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Londonderry - Moose Hill",
+   "lat": 42.8625,
+   "lon": -71.3801,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Brigantine",
+   "lat": 39.4649,
+   "lon": -74.4487,
+   "ugm3": 4.8
+  },
+  {
+   "name": "South Camden",
+   "lat": 39.924,
+   "lon": -75.1223,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Millville",
+   "lat": 39.4223,
+   "lon": -75.0252,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Jersey City FH",
+   "lat": 40.7255,
+   "lon": -74.0523,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Flemington",
+   "lat": 40.5153,
+   "lon": -74.8068,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Rider University",
+   "lat": 40.2831,
+   "lon": -74.7426,
+   "ugm3": 5.7
+  },
+  {
+   "name": "Chester",
+   "lat": 40.7876,
+   "lon": -74.6763,
+   "ugm3": 9.5
+  },
+  {
+   "name": "Elizabeth Trailer",
+   "lat": 40.6414,
+   "lon": -74.2084,
+   "ugm3": 2.2
+  },
+  {
+   "name": "Columbia",
+   "lat": 40.9246,
+   "lon": -75.0678,
+   "ugm3": 2.2
+  },
+  {
+   "name": "Del Norte",
+   "lat": 35.1353,
+   "lon": -106.5847,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Jefferson",
+   "lat": 35.1441,
+   "lon": -106.6044,
+   "ugm3": 2.5
+  },
+  {
+   "name": "South Valley",
+   "lat": 35.0186,
+   "lon": -106.6519,
+   "ugm3": 2.0
+  },
+  {
+   "name": "WESTSIDE - 9 Mile",
+   "lat": 35.0641,
+   "lon": -106.7613,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Tramway",
+   "lat": 35.185,
+   "lon": -106.5077,
+   "ugm3": 1.8
+  },
+  {
+   "name": "North Valley",
+   "lat": 35.1878,
+   "lon": -106.6039,
+   "ugm3": 1.5
+  },
+  {
+   "name": "Anthony",
+   "lat": 32.0036,
+   "lon": -106.5992,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Desert View",
+   "lat": 31.7961,
+   "lon": -106.5839,
+   "ugm3": 10.5
+  },
+  {
+   "name": "Santa Teresa",
+   "lat": 31.7878,
+   "lon": -106.6828,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Hobbs Jefferson",
+   "lat": 32.7267,
+   "lon": -103.1233,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Santa Fe Airport",
+   "lat": 35.6198,
+   "lon": -106.0797,
+   "ugm3": 1.7
+  },
+  {
+   "name": "Albany",
+   "lat": 42.6425,
+   "lon": -73.7547,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Bronx - IS52",
+   "lat": 40.8161,
+   "lon": -73.9022,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Bronx - IS74",
+   "lat": 40.8147,
+   "lon": -73.8867,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Buffalo",
+   "lat": 42.8781,
+   "lon": -78.8094,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Whiteface Mtn",
+   "lat": 44.3931,
+   "lon": -73.8589,
+   "ugm3": 5.9
+  },
+  {
+   "name": "Bklyn - PS 314",
+   "lat": 40.6418,
+   "lon": -74.0187,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Bklyn - PS274",
+   "lat": 40.6944,
+   "lon": -73.9286,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Rochester Near-road",
+   "lat": 43.145,
+   "lon": -77.5576,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Rochester",
+   "lat": 43.1461,
+   "lon": -77.5481,
+   "ugm3": 3.4
+  },
+  {
+   "name": "CCNY",
+   "lat": 40.8197,
+   "lon": -73.9481,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Utica",
+   "lat": 43.0994,
+   "lon": -75.225,
+   "ugm3": 0.4
+  },
+  {
+   "name": "E Syracuse",
+   "lat": 43.0528,
+   "lon": -76.0597,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Maspeth",
+   "lat": 40.7269,
+   "lon": -73.8933,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Queens",
+   "lat": 40.7375,
+   "lon": -73.8244,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Queens Near-road",
+   "lat": 40.7393,
+   "lon": -73.8177,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Fresh Kills",
+   "lat": 40.5802,
+   "lon": -74.1994,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Pinnacle State Park",
+   "lat": 42.0972,
+   "lon": -77.2103,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Holtsville",
+   "lat": 40.8278,
+   "lon": -73.0575,
+   "ugm3": 3.1
+  },
+  {
+   "name": "White Plains",
+   "lat": 41.0522,
+   "lon": -73.7642,
+   "ugm3": 1.8
+  },
+  {
+   "name": "HICKORY",
+   "lat": 35.7289,
+   "lon": -81.3656,
+   "ugm3": 2.0
+  },
+  {
+   "name": "LWATTOWR",
+   "lat": 35.8145,
+   "lon": -80.2627,
+   "ugm3": 7.9
+  },
+  {
+   "name": "Durham Armory",
+   "lat": 36.033,
+   "lon": -78.904,
+   "ugm3": 4.8
+  },
+  {
+   "name": "LEGGETT",
+   "lat": 35.9883,
+   "lon": -77.5843,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Hattie Avenue",
+   "lat": 36.1109,
+   "lon": -80.2244,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Clemmons Middle",
+   "lat": 36.026,
+   "lon": -80.3423,
+   "ugm3": 6.7
+  },
+  {
+   "name": "MENDNHAL",
+   "lat": 36.109,
+   "lon": -79.8023,
+   "ugm3": 8.1
+  },
+  {
+   "name": "JOHNSTON",
+   "lat": 35.5909,
+   "lon": -78.4622,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Garinger",
+   "lat": 35.2411,
+   "lon": -80.7831,
+   "ugm3": 1.2
+  },
+  {
+   "name": "Remount",
+   "lat": 35.2132,
+   "lon": -80.8741,
+   "ugm3": 1.4
+  },
+  {
+   "name": "Spruce Pine",
+   "lat": 35.9125,
+   "lon": -82.0621,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Northampton",
+   "lat": 36.5117,
+   "lon": -77.6554,
+   "ugm3": 1.0
+  },
+  {
+   "name": "PITTAGCT",
+   "lat": 35.6413,
+   "lon": -77.3601,
+   "ugm3": 0.0
+  },
+  {
+   "name": "ROCKWELL",
+   "lat": 35.5519,
+   "lon": -80.395,
+   "ugm3": 12.0
+  },
+  {
+   "name": "BRYSON",
+   "lat": 35.4348,
+   "lon": -83.4421,
+   "ugm3": 8.0
+  },
+  {
+   "name": "Millbrook NCore",
+   "lat": 35.8561,
+   "lon": -78.5742,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Triple Oak - Near Road",
+   "lat": 35.8652,
+   "lon": -78.8197,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Theodore Roosevelt NP - Painted Canyon VC",
+   "lat": 46.9497,
+   "lon": -103.5144,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Lostwood NWR",
+   "lat": 48.6419,
+   "lon": -102.4022,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Bismarck Residential",
+   "lat": 46.8253,
+   "lon": -100.7681,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Fargo NW",
+   "lat": 46.9336,
+   "lon": -96.8547,
+   "ugm3": 5.0
+  },
+  {
+   "name": "TRNP-NU",
+   "lat": 47.6011,
+   "lon": -103.2642,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Beulah North",
+   "lat": 47.2986,
+   "lon": -101.7669,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Hannover",
+   "lat": 47.1858,
+   "lon": -101.4281,
+   "ugm3": 5.0
+  },
+  {
+   "name": "RYDER",
+   "lat": 47.9409,
+   "lon": -101.5716,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Lima",
+   "lat": 40.771,
+   "lon": -84.0539,
+   "ugm3": 9.6
+  },
+  {
+   "name": "Springfield Fire St1",
+   "lat": 39.9288,
+   "lon": -83.8095,
+   "ugm3": 4.6
+  },
+  {
+   "name": "District 6",
+   "lat": 41.5552,
+   "lon": -81.5753,
+   "ugm3": 4.2
+  },
+  {
+   "name": "St Theodosius",
+   "lat": 41.477,
+   "lon": -81.6824,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Cleveland Fire St13",
+   "lat": 41.4718,
+   "lon": -81.6568,
+   "ugm3": 4.4
+  },
+  {
+   "name": "GT Craig NCore PAMS",
+   "lat": 41.4922,
+   "lon": -81.6786,
+   "ugm3": 4.0
+  },
+  {
+   "name": "Harvard Yards",
+   "lat": 41.4467,
+   "lon": -81.6624,
+   "ugm3": 5.1
+  },
+  {
+   "name": "Cleveland Near Road",
+   "lat": 41.4409,
+   "lon": -81.4949,
+   "ugm3": 4.0
+  },
+  {
+   "name": "New Albany",
+   "lat": 40.0845,
+   "lon": -82.8155,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Fairgrounds",
+   "lat": 40.0027,
+   "lon": -82.9944,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Smoky Row Near Road",
+   "lat": 40.1111,
+   "lon": -83.0654,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Maple Canyon",
+   "lat": 40.0878,
+   "lon": -82.9596,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Colerain",
+   "lat": 39.2149,
+   "lon": -84.6909,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Taft NCore PAMS",
+   "lat": 39.1289,
+   "lon": -84.504,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Cincinnati Near Road",
+   "lat": 39.146,
+   "lon": -84.5384,
+   "ugm3": 9.3
+  },
+  {
+   "name": "Steubenville",
+   "lat": 40.3665,
+   "lon": -80.6157,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Painesville",
+   "lat": 41.7268,
+   "lon": -81.2422,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Erie",
+   "lat": 41.6441,
+   "lon": -83.5463,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Eastside Pump St",
+   "lat": 41.7194,
+   "lon": -83.475,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Chippewa",
+   "lat": 41.0604,
+   "lon": -81.9239,
+   "ugm3": 5.9
+  },
+  {
+   "name": "Sinclair",
+   "lat": 39.7582,
+   "lon": -84.1974,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Portsmouth Water Treatment Plant",
+   "lat": 38.7546,
+   "lon": -82.917,
+   "ugm3": 6.8
+  },
+  {
+   "name": "East HS",
+   "lat": 41.0635,
+   "lon": -81.469,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Laird Eng Bldg",
+   "lat": 41.2317,
+   "lon": -80.8012,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Lebanon",
+   "lat": 39.4269,
+   "lon": -84.2008,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Healdton",
+   "lat": 34.2569,
+   "lon": -97.4742,
+   "ugm3": 7.6
+  },
+  {
+   "name": "Moore",
+   "lat": 35.32,
+   "lon": -97.4883,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Lawton North",
+   "lat": 34.633,
+   "lon": -98.4288,
+   "ugm3": 7.7
+  },
+  {
+   "name": "Seiling",
+   "lat": 36.1589,
+   "lon": -98.9353,
+   "ugm3": 7.3
+  },
+  {
+   "name": "Ponca City",
+   "lat": 36.6972,
+   "lon": -97.0813,
+   "ugm3": 7.8
+  },
+  {
+   "name": "Near Road OKC",
+   "lat": 35.503,
+   "lon": -97.5777,
+   "ugm3": 8.5
+  },
+  {
+   "name": "North OKC",
+   "lat": 35.6141,
+   "lon": -97.4751,
+   "ugm3": 8.5
+  },
+  {
+   "name": "McAlester",
+   "lat": 34.9061,
+   "lon": -95.7941,
+   "ugm3": 8.9
+  },
+  {
+   "name": "Glenpool",
+   "lat": 35.9525,
+   "lon": -96.0033,
+   "ugm3": 10.0
+  },
+  {
+   "name": "Tulsa",
+   "lat": 36.2067,
+   "lon": -95.9764,
+   "ugm3": 10.5
+  },
+  {
+   "name": "Baker City - Forest Service",
+   "lat": 44.7882,
+   "lon": -117.8446,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Portland - Spangler Road",
+   "lat": 45.2593,
+   "lon": -122.5882,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Multorpor",
+   "lat": 45.2884,
+   "lon": -121.7828,
+   "ugm3": 1.5
+  },
+  {
+   "name": "Portland - Sauvie Island",
+   "lat": 45.7685,
+   "lon": -122.7721,
+   "ugm3": 4.2
+  },
+  {
+   "name": "CTCLUSI Radar Hill-OR",
+   "lat": 43.3819,
+   "lon": -124.2639,
+   "ugm3": 7.5
+  },
+  {
+   "name": "Prineville - Davidson Park",
+   "lat": 44.2998,
+   "lon": -120.8448,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Sisters Forest Service",
+   "lat": 44.2921,
+   "lon": -121.5555,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Bend - Pump Station",
+   "lat": 44.0639,
+   "lon": -121.3126,
+   "ugm3": 2.4
+  },
+  {
+   "name": "John Day Dayton St",
+   "lat": 44.418,
+   "lon": -118.9513,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Burns - Washington St.",
+   "lat": 43.5892,
+   "lon": -119.0483,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Shady Cove - Shady Cove School",
+   "lat": 42.6232,
+   "lon": -122.8102,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Talent - Rapp Lane",
+   "lat": 42.2299,
+   "lon": -122.7877,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Ashland Fire Dept",
+   "lat": 42.1941,
+   "lon": -122.7086,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Madras - Westside School",
+   "lat": 44.6306,
+   "lon": -121.1316,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Grants Pass - Parkside School",
+   "lat": 42.4341,
+   "lon": -123.3485,
+   "ugm3": 1.6
+  },
+  {
+   "name": "Klamath Falls - Peterson School",
+   "lat": 42.1903,
+   "lon": -121.7314,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Lakeview - Center & M",
+   "lat": 42.1892,
+   "lon": -120.354,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Eugene - Highway 99",
+   "lat": 44.0672,
+   "lon": -123.1414,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Eugene - Amazon Park",
+   "lat": 44.0263,
+   "lon": -123.0838,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Springfield City Hall",
+   "lat": 44.0467,
+   "lon": -123.0177,
+   "ugm3": 2.3
+  },
+  {
+   "name": "Oakridge - Willamette Activity Center",
+   "lat": 43.7444,
+   "lon": -122.4805,
+   "ugm3": 1.8
+  },
+  {
+   "name": "Cottage Grove City Shops",
+   "lat": 43.7995,
+   "lon": -123.0535,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Albany - Calapooia School",
+   "lat": 44.6157,
+   "lon": -123.0915,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Mill City",
+   "lat": 44.7512,
+   "lon": -122.4785,
+   "ugm3": 1.5
+  },
+  {
+   "name": "Lyons",
+   "lat": 44.7787,
+   "lon": -122.617,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Turner - CJHS",
+   "lat": 44.8103,
+   "lon": -122.9151,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Silverton",
+   "lat": 45.015,
+   "lon": -122.7904,
+   "ugm3": 1.7
+  },
+  {
+   "name": "Salem - State Hospital",
+   "lat": 44.9431,
+   "lon": -123.0059,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Detroit Lake",
+   "lat": 44.7283,
+   "lon": -122.1828,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Portland - SE Lafayette",
+   "lat": 45.4966,
+   "lon": -122.6029,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Pendleton - McKay Creek",
+   "lat": 45.6522,
+   "lon": -118.823,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Hermiston - Municipal Airport",
+   "lat": 45.829,
+   "lon": -119.263,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Cove - City Hall",
+   "lat": 45.3009,
+   "lon": -117.8129,
+   "ugm3": 3.4
+  },
+  {
+   "name": "La Grande Hall & N Sts",
+   "lat": 45.3235,
+   "lon": -118.0778,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Enterprise - US Forest Service",
+   "lat": 45.4264,
+   "lon": -117.2961,
+   "ugm3": 4.3
+  },
+  {
+   "name": "The Dalles - Cherry Heights",
+   "lat": 45.6024,
+   "lon": -121.2034,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Hillsboro - Hare Field",
+   "lat": 45.5285,
+   "lon": -122.9724,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Portland Near Road",
+   "lat": 45.3992,
+   "lon": -122.7455,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Beaverton - Highland Park School",
+   "lat": 45.4702,
+   "lon": -122.8159,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Arendtsville",
+   "lat": 39.9233,
+   "lon": -77.3081,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Lawrenceville",
+   "lat": 40.4656,
+   "lon": -79.9611,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Liberty (SAHS)",
+   "lat": 40.3238,
+   "lon": -79.8682,
+   "ugm3": 3.5
+  },
+  {
+   "name": "South Fayette",
+   "lat": 40.3819,
+   "lon": -80.1856,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Harrison Township",
+   "lat": 40.6175,
+   "lon": -79.7277,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Parkway East (Near Road)",
+   "lat": 40.4374,
+   "lon": -79.8636,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Kittanning",
+   "lat": 40.8142,
+   "lon": -79.565,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Beaver Falls",
+   "lat": 40.7478,
+   "lon": -80.3167,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Reading Airport",
+   "lat": 40.3833,
+   "lon": -75.9686,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Altoona",
+   "lat": 40.515,
+   "lon": -78.3889,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Johnstown",
+   "lat": 40.3097,
+   "lon": -78.9158,
+   "ugm3": 3.0
+  },
+  {
+   "name": "State College",
+   "lat": 40.8114,
+   "lon": -77.8769,
+   "ugm3": 3.2
+  },
+  {
+   "name": "New Garden",
+   "lat": 39.8344,
+   "lon": -75.7678,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Moshannon",
+   "lat": 41.1175,
+   "lon": -78.5261,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Harrisburg",
+   "lat": 40.247,
+   "lon": -76.847,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Hershey",
+   "lat": 40.2722,
+   "lon": -76.6814,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Chester",
+   "lat": 39.8356,
+   "lon": -75.3725,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Marcus Hook",
+   "lat": 39.8187,
+   "lon": -75.414,
+   "ugm3": 4.3
+  },
+  {
+   "name": "Erie",
+   "lat": 42.1428,
+   "lon": -80.0372,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Holbrook",
+   "lat": 39.82,
+   "lon": -80.2897,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Strongstown",
+   "lat": 40.5633,
+   "lon": -78.92,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Scranton",
+   "lat": 41.4428,
+   "lon": -75.6231,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Lancaster",
+   "lat": 40.0467,
+   "lon": -76.2833,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Lancaster DW",
+   "lat": 40.0439,
+   "lon": -76.1125,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Farrell",
+   "lat": 41.215,
+   "lon": -80.485,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Swiftwater",
+   "lat": 41.0831,
+   "lon": -75.3283,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Norristown",
+   "lat": 40.1122,
+   "lon": -75.3092,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Freemansburg",
+   "lat": 40.6281,
+   "lon": -75.3411,
+   "ugm3": 3.1
+  },
+  {
+   "name": "LABP",
+   "lat": 40.0089,
+   "lon": -75.0978,
+   "ugm3": 5.6
+  },
+  {
+   "name": "NEW",
+   "lat": 39.9914,
+   "lon": -75.0808,
+   "ugm3": 4.2
+  },
+  {
+   "name": "RIT",
+   "lat": 39.9225,
+   "lon": -75.1868,
+   "ugm3": 4.5
+  },
+  {
+   "name": "FAB",
+   "lat": 39.9603,
+   "lon": -75.1424,
+   "ugm3": 4.6
+  },
+  {
+   "name": "TOR",
+   "lat": 40.0542,
+   "lon": -74.9852,
+   "ugm3": 4.4
+  },
+  {
+   "name": "MON",
+   "lat": 39.9888,
+   "lon": -75.2072,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Tioga County",
+   "lat": 41.6447,
+   "lon": -76.9392,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Charleroi",
+   "lat": 40.1469,
+   "lon": -79.9033,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Florence",
+   "lat": 40.4447,
+   "lon": -80.42,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Houston",
+   "lat": 40.269,
+   "lon": -80.244,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Greensburg",
+   "lat": 40.3053,
+   "lon": -79.5061,
+   "ugm3": 2.9
+  },
+  {
+   "name": "York",
+   "lat": 39.9653,
+   "lon": -76.6994,
+   "ugm3": 4.0
+  },
+  {
+   "name": "W Greenwich",
+   "lat": 41.615,
+   "lon": -71.7197,
+   "ugm3": 0.0
+  },
+  {
+   "name": "CCRI Providence",
+   "lat": 41.8075,
+   "lon": -71.4139,
+   "ugm3": 1.3
+  },
+  {
+   "name": "E Providence",
+   "lat": 41.8403,
+   "lon": -71.3617,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Narragansett",
+   "lat": 41.4942,
+   "lon": -71.4219,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Cape Romain",
+   "lat": 32.941,
+   "lon": -79.657,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Chesterfield",
+   "lat": 34.6153,
+   "lon": -80.1989,
+   "ugm3": 7.2
+  },
+  {
+   "name": "Trenton",
+   "lat": 33.7397,
+   "lon": -81.8536,
+   "ugm3": 7.9
+  },
+  {
+   "name": "Greenville-ESC",
+   "lat": 34.8439,
+   "lon": -82.4146,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Parklane",
+   "lat": 34.0939,
+   "lon": -80.9622,
+   "ugm3": 6.5
+  },
+  {
+   "name": "TK Gregg",
+   "lat": 34.9556,
+   "lon": -81.9248,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Research Farm",
+   "lat": 44.3486,
+   "lon": -96.8073,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Watertown",
+   "lat": 44.8997,
+   "lon": -97.1288,
+   "ugm3": 4.0
+  },
+  {
+   "name": "WIND CAVE",
+   "lat": 43.5576,
+   "lon": -103.4837,
+   "ugm3": 7.7
+  },
+  {
+   "name": "Pierre",
+   "lat": 44.3738,
+   "lon": -100.2873,
+   "ugm3": 0.5
+  },
+  {
+   "name": "MARYVILL",
+   "lat": 35.7683,
+   "lon": -83.9422,
+   "ugm3": 8.8
+  },
+  {
+   "name": "Look Rock - GSMNP",
+   "lat": 35.6335,
+   "lon": -83.9416,
+   "ugm3": 5.0
+  },
+  {
+   "name": "LOCKELAND",
+   "lat": 36.1767,
+   "lon": -86.7386,
+   "ugm3": 8.9
+  },
+  {
+   "name": "DYERSBURG",
+   "lat": 36.0528,
+   "lon": -89.3819,
+   "ugm3": 7.7
+  },
+  {
+   "name": "Siskin Dr",
+   "lat": 35.051,
+   "lon": -85.2929,
+   "ugm3": 11.1
+  },
+  {
+   "name": "AIR LAB",
+   "lat": 35.9803,
+   "lon": -83.9306,
+   "ugm3": 7.2
+  },
+  {
+   "name": "SPRINGHILL",
+   "lat": 36.0183,
+   "lon": -83.8761,
+   "ugm3": 9.4
+  },
+  {
+   "name": "ATHENS",
+   "lat": 35.4511,
+   "lon": -84.5992,
+   "ugm3": 7.7
+  },
+  {
+   "name": "Columbia",
+   "lat": 35.6519,
+   "lon": -87.0096,
+   "ugm3": 8.5
+  },
+  {
+   "name": "Harriman",
+   "lat": 35.9386,
+   "lon": -84.5439,
+   "ugm3": 5.7
+  },
+  {
+   "name": "Kingsport",
+   "lat": 36.5408,
+   "lon": -82.5217,
+   "ugm3": 4.3
+  },
+  {
+   "name": "HVILLE",
+   "lat": 36.2975,
+   "lon": -86.6525,
+   "ugm3": 11.0
+  },
+  {
+   "name": "Chamizal C41",
+   "lat": 31.7656,
+   "lon": -106.455,
+   "ugm3": 7.9
+  },
+  {
+   "name": "Socorro Hueco C49",
+   "lat": 31.6675,
+   "lon": -106.2877,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Clinton C403",
+   "lat": 29.7339,
+   "lon": -95.2575,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Mission C43",
+   "lat": 26.2262,
+   "lon": -98.2911,
+   "ugm3": 7.5
+  },
+  {
+   "name": "Waco C1037",
+   "lat": 31.6531,
+   "lon": -97.0706,
+   "ugm3": 9.2
+  },
+  {
+   "name": "Corpus Christi Dona Park C635",
+   "lat": 27.8118,
+   "lon": -97.4657,
+   "ugm3": 6.3
+  },
+  {
+   "name": "Smithfield",
+   "lat": 41.8428,
+   "lon": -111.8519,
+   "ugm3": 2.7
+  },
+  {
+   "name": "P2",
+   "lat": 39.5958,
+   "lon": -110.77,
+   "ugm3": 1.7
+  },
+  {
+   "name": "BV",
+   "lat": 40.898,
+   "lon": -111.8855,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Roosevelt",
+   "lat": 40.2943,
+   "lon": -110.009,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Enoch",
+   "lat": 37.7474,
+   "lon": -113.0555,
+   "ugm3": 2.5
+  },
+  {
+   "name": "Beach",
+   "lat": 40.735,
+   "lon": -112.211,
+   "ugm3": 7.9
+  },
+  {
+   "name": "Hawthorne",
+   "lat": 40.7335,
+   "lon": -111.8717,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Rose Park",
+   "lat": 40.7955,
+   "lon": -111.9309,
+   "ugm3": 2.4
+  },
+  {
+   "name": "Herriman #3",
+   "lat": 40.4964,
+   "lon": -112.0363,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Erda",
+   "lat": 40.6006,
+   "lon": -112.355,
+   "ugm3": 3.5
+  },
+  {
+   "name": "Vernal #4",
+   "lat": 40.4647,
+   "lon": -109.5608,
+   "ugm3": 2.1
+  },
+  {
+   "name": "Lindon",
+   "lat": 40.3414,
+   "lon": -111.7136,
+   "ugm3": 1.4
+  },
+  {
+   "name": "Spanish Fork",
+   "lat": 40.1364,
+   "lon": -111.6602,
+   "ugm3": 1.9
+  },
+  {
+   "name": "Harrisville",
+   "lat": 41.3028,
+   "lon": -111.9883,
+   "ugm3": 2.7
+  },
+  {
+   "name": "Bennington",
+   "lat": 42.8875,
+   "lon": -73.2497,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Rutland",
+   "lat": 43.6085,
+   "lon": -72.9825,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Albemarle HS",
+   "lat": 38.0766,
+   "lon": -78.504,
+   "ugm3": 3.5
+  },
+  {
+   "name": "SHIRLEY PLANTATION",
+   "lat": 37.3444,
+   "lon": -77.2592,
+   "ugm3": 3.4
+  },
+  {
+   "name": "BEACH ROAD",
+   "lat": 37.3575,
+   "lon": -77.5935,
+   "ugm3": 3.9
+  },
+  {
+   "name": "FRANCONIA",
+   "lat": 38.7734,
+   "lon": -77.1047,
+   "ugm3": 3.2
+  },
+  {
+   "name": "REST - LESTER BUILDING SYSTEMS",
+   "lat": 39.281,
+   "lon": -78.0816,
+   "ugm3": 3.0
+  },
+  {
+   "name": "MATH & SCIENCE CTR",
+   "lat": 37.5565,
+   "lon": -77.4003,
+   "ugm3": 3.5
+  },
+  {
+   "name": "ASHBURN",
+   "lat": 39.0247,
+   "lon": -77.4892,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Shenandoah NP",
+   "lat": 38.5231,
+   "lon": -78.4347,
+   "ugm3": 3.9
+  },
+  {
+   "name": "VINTON - Herman Horn ES",
+   "lat": 37.2834,
+   "lon": -79.8845,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Rockingham",
+   "lat": 38.4775,
+   "lon": -78.8195,
+   "ugm3": 4.5
+  },
+  {
+   "name": "HAMPTON - NASA",
+   "lat": 37.1037,
+   "lon": -76.387,
+   "ugm3": 3.4
+  },
+  {
+   "name": "NORFOLK - NOAA",
+   "lat": 36.8556,
+   "lon": -76.3013,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Ritzville-W Alder Ave",
+   "lat": 47.1281,
+   "lon": -118.3819,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Clarkston-13th St",
+   "lat": 46.4256,
+   "lon": -117.0598,
+   "ugm3": 0.2
+  },
+  {
+   "name": "Kennewick-S Steptoe St (SOS)",
+   "lat": 46.2046,
+   "lon": -119.2437,
+   "ugm3": 2.8
+  },
+  {
+   "name": "Chelan-Woodin Ave",
+   "lat": 47.8386,
+   "lon": -120.0231,
+   "ugm3": 12.6
+  },
+  {
+   "name": "Leavenworth-Evans St",
+   "lat": 47.5988,
+   "lon": -120.6647,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Wenatchee-Fifth St",
+   "lat": 47.4306,
+   "lon": -120.3419,
+   "ugm3": 10.4
+  },
+  {
+   "name": "Neah Bay 2-Makah Tribe",
+   "lat": 48.3661,
+   "lon": -124.61,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Port Angeles-E 5th St",
+   "lat": 48.115,
+   "lon": -123.4364,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Yacolt-Yacolt Rd",
+   "lat": 45.8679,
+   "lon": -122.4119,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Vancouver-NE 84th Ave",
+   "lat": 45.6434,
+   "lon": -122.5874,
+   "ugm3": 11.5
+  },
+  {
+   "name": "Dayton-W Main",
+   "lat": 46.318,
+   "lon": -117.985,
+   "ugm3": 3.3
+  },
+  {
+   "name": "Longview-30th Ave",
+   "lat": 46.1394,
+   "lon": -122.9619,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Mesa-Pepoit Way (temp SO)",
+   "lat": 46.5754,
+   "lon": -119.0021,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Moses Lake-Balsam St",
+   "lat": 47.1303,
+   "lon": -119.2737,
+   "ugm3": 9.8
+  },
+  {
+   "name": "Quincy 3rd",
+   "lat": 47.2413,
+   "lon": -119.846,
+   "ugm3": 8.8
+  },
+  {
+   "name": "Taholah-Quinault Tribe",
+   "lat": 47.3442,
+   "lon": -124.2879,
+   "ugm3": 4.2
+  },
+  {
+   "name": "Aberdeen-Division St",
+   "lat": 46.9772,
+   "lon": -123.8317,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Port Townsend-San Juan",
+   "lat": 48.1291,
+   "lon": -122.7789,
+   "ugm3": 3.7
+  },
+  {
+   "name": "North Bend-North Bend Way (SO)",
+   "lat": 47.4902,
+   "lon": -121.7727,
+   "ugm3": 5.4
+  },
+  {
+   "name": "Lake Forest Park-Town Center",
+   "lat": 47.7536,
+   "lon": -122.2772,
+   "ugm3": 4.9
+  },
+  {
+   "name": "Seattle-10th & Weller",
+   "lat": 47.5972,
+   "lon": -122.3197,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Bellevue-SE 12th",
+   "lat": 47.6009,
+   "lon": -122.1484,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Seattle-Duwamish",
+   "lat": 47.56,
+   "lon": -122.3383,
+   "ugm3": 6.1
+  },
+  {
+   "name": "Seattle-Beacon Hill",
+   "lat": 47.5682,
+   "lon": -122.3086,
+   "ugm3": 9.4
+  },
+  {
+   "name": "Seattle-South Park",
+   "lat": 47.5297,
+   "lon": -122.3203,
+   "ugm3": 4.5
+  },
+  {
+   "name": "Bremerton-Spruce Ave",
+   "lat": 47.5927,
+   "lon": -122.6274,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Ellensburg-Ruby St",
+   "lat": 46.9936,
+   "lon": -120.545,
+   "ugm3": 20.0
+  },
+  {
+   "name": "Chehalis-Market Blvd",
+   "lat": 46.6641,
+   "lon": -122.9673,
+   "ugm3": 4.8
+  },
+  {
+   "name": "Shelton-W Franklin",
+   "lat": 47.2136,
+   "lon": -123.1008,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Twisp-S Lincoln St",
+   "lat": 48.3647,
+   "lon": -120.1201,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Winthrop-Chewuch Rd",
+   "lat": 48.4772,
+   "lon": -120.1906,
+   "ugm3": 1.1
+  },
+  {
+   "name": "Omak-Colville Tribe",
+   "lat": 48.4,
+   "lon": -119.519,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Tacoma-S 36th St",
+   "lat": 47.2263,
+   "lon": -122.4626,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Tacoma-L St",
+   "lat": 47.1864,
+   "lon": -122.4517,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Anacortes-202 Ave (SO-AQS)",
+   "lat": 48.5201,
+   "lon": -122.6132,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Mt Vernon-S 2nd St",
+   "lat": 48.4102,
+   "lon": -122.3376,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Anacortes-Bartholomew Rd (US)",
+   "lat": 48.4654,
+   "lon": -122.5604,
+   "ugm3": 3.2
+  },
+  {
+   "name": "Darrington-Fir St",
+   "lat": 48.2468,
+   "lon": -121.6031,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Marysville-7th Ave",
+   "lat": 48.0543,
+   "lon": -122.1715,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Cheney-Turnbull (SO)",
+   "lat": 47.4164,
+   "lon": -117.5298,
+   "ugm3": 2.6
+  },
+  {
+   "name": "Spokane-N Monroe St",
+   "lat": 47.6998,
+   "lon": -117.4263,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Colbert-Greenbluff",
+   "lat": 47.8082,
+   "lon": -117.3433,
+   "ugm3": 1.0
+  },
+  {
+   "name": "Airway Heights-West 12th (US)",
+   "lat": 47.6454,
+   "lon": -117.589,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Wellpinit-Spokane Tribe",
+   "lat": 47.8852,
+   "lon": -117.9886,
+   "ugm3": 6.4
+  },
+  {
+   "name": "Colville-E 1st St",
+   "lat": 48.5447,
+   "lon": -117.9032,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Lacey-College St",
+   "lat": 47.0293,
+   "lon": -122.8215,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Walla Walla-12th St",
+   "lat": 46.0588,
+   "lon": -118.3514,
+   "ugm3": 3.7
+  },
+  {
+   "name": "Burbank-Maple Street",
+   "lat": 46.2001,
+   "lon": -119.0086,
+   "ugm3": 3.1
+  },
+  {
+   "name": "Custer-Loomis (SO-AQS)",
+   "lat": 48.9507,
+   "lon": -122.5544,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Bellingham Pacific",
+   "lat": 48.76,
+   "lon": -122.4565,
+   "ugm3": 5.0
+  },
+  {
+   "name": "Pullman-SE Dexter St",
+   "lat": 46.7246,
+   "lon": -117.1804,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Lacrosse-Hill St",
+   "lat": 46.8153,
+   "lon": -117.8739,
+   "ugm3": 2.2
+  },
+  {
+   "name": "Rosalia-S Josephine Ave",
+   "lat": 47.2312,
+   "lon": -117.3691,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Sunnyside-S 16th",
+   "lat": 46.3203,
+   "lon": -119.9981,
+   "ugm3": 7.0
+  },
+  {
+   "name": "Yakima-4th Ave",
+   "lat": 46.595,
+   "lon": -120.5123,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Toppenish-Yakama Tribe",
+   "lat": 46.3802,
+   "lon": -120.3326,
+   "ugm3": 6.0
+  },
+  {
+   "name": "WEIRTON",
+   "lat": 40.4273,
+   "lon": -80.5925,
+   "ugm3": 3.0
+  },
+  {
+   "name": "CHARLESTON",
+   "lat": 38.3463,
+   "lon": -81.6212,
+   "ugm3": 6.0
+  },
+  {
+   "name": "MOUNDSVILLE",
+   "lat": 39.9158,
+   "lon": -80.7342,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Bad River Tribal School",
+   "lat": 46.6144,
+   "lon": -90.6986,
+   "ugm3": 3.9
+  },
+  {
+   "name": "Green Bay East High",
+   "lat": 44.5167,
+   "lon": -87.9939,
+   "ugm3": 6.6
+  },
+  {
+   "name": "Madison East",
+   "lat": 43.1008,
+   "lon": -89.3572,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Horicon Wildlife Area",
+   "lat": 43.4661,
+   "lon": -88.6211,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Eau Claire",
+   "lat": 44.7614,
+   "lon": -91.413,
+   "ugm3": 5.3
+  },
+  {
+   "name": "Potawatomi",
+   "lat": 45.5639,
+   "lon": -88.81,
+   "ugm3": 4.7
+  },
+  {
+   "name": "Potosi",
+   "lat": 42.6921,
+   "lon": -90.6964,
+   "ugm3": 7.5
+  },
+  {
+   "name": "Chiwaukee",
+   "lat": 42.5047,
+   "lon": -87.8111,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Lake Dubay",
+   "lat": 44.7072,
+   "lon": -89.7697,
+   "ugm3": 5.5
+  },
+  {
+   "name": "Milwaukee College Ave-Near Road",
+   "lat": 42.9326,
+   "lon": -87.9343,
+   "ugm3": 3.4
+  },
+  {
+   "name": "Appleton AAL",
+   "lat": 44.3069,
+   "lon": -88.3956,
+   "ugm3": 4.6
+  },
+  {
+   "name": "Harrington Beach",
+   "lat": 43.4981,
+   "lon": -87.81,
+   "ugm3": 2.9
+  },
+  {
+   "name": "Devils Lake",
+   "lat": 43.4356,
+   "lon": -89.6803,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Waukesha-Cleveland Ave",
+   "lat": 43.0203,
+   "lon": -88.215,
+   "ugm3": 7.6
+  },
+  {
+   "name": "South Pass",
+   "lat": 42.5275,
+   "lon": -108.7203,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Cheyenne NCore",
+   "lat": 41.1822,
+   "lon": -104.7783,
+   "ugm3": 2.0
+  },
+  {
+   "name": "Casper Gaseous",
+   "lat": 42.8223,
+   "lon": -106.365,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Sheridan PD",
+   "lat": 44.8151,
+   "lon": -106.9559,
+   "ugm3": 6.0
+  },
+  {
+   "name": "Yellowstone- Old Faithful Snow Lodge",
+   "lat": 44.3731,
+   "lon": -110.8308,
+   "ugm3": 0.0
+  },
+  {
+   "name": "Nogales ITN",
+   "lat": 31.2913,
+   "lon": -110.9515,
+   "ugm3": 4.4
+  },
+  {
+   "name": "Saint-Jean-Baptiste",
+   "lat": 45.641,
+   "lon": -73.4997,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Sainte-Anne-de-Bellevue",
+   "lat": 45.4265,
+   "lon": -73.9289,
+   "ugm3": 3.6
+  },
+  {
+   "name": "Rivi\u00e8re-des-Prairies",
+   "lat": 45.6517,
+   "lon": -73.5739,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Molson",
+   "lat": 45.5428,
+   "lon": -73.572,
+   "ugm3": 3.8
+  },
+  {
+   "name": "Caserne 17",
+   "lat": 45.5933,
+   "lon": -73.6373,
+   "ugm3": 3.0
+  },
+  {
+   "name": "St-Dominique",
+   "lat": 45.5122,
+   "lon": -73.5669,
+   "ugm3": 4.0
+  },
+  {
+   "name": "York-Roberval",
+   "lat": 45.4646,
+   "lon": -73.5826,
+   "ugm3": 4.1
+  },
+  {
+   "name": "Catawba Indian Nation",
+   "lat": 34.9126,
+   "lon": -80.8743,
+   "ugm3": 3.0
+  },
+  {
+   "name": "Miami",
+   "lat": 36.9222,
+   "lon": -94.8389,
+   "ugm3": 13.9
+  }
+ ]
+}
