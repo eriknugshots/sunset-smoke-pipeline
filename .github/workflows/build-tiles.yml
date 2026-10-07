@@ -67,6 +67,15 @@ jobs:
           git init -b gh-pages -q
           git -c user.name=pipeline -c user.email=pipeline@users.noreply.github.com add -A
           git -c user.name=pipeline -c user.email=pipeline@users.noreply.github.com commit -q -m "cycle $(date -u +%Y%m%dT%H%MZ)"
-          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+          # GitHub's git server sometimes answers a push with a 500 (2026-10-07:
+          # "remote rejected ... Internal Server Error" after a 20-minute build).
+          # Retry with backoff rather than throwing the cycle away.
+          for wait in 30 60 120 240 0; do
+            git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages && exit 0
+            [ "$wait" = 0 ] && break
+            echo "push failed; retrying in ${wait}s"
+            sleep "$wait"
+          done
+          echo "push failed after 5 tries"; exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
