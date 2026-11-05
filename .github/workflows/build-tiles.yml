@@ -1,7 +1,9 @@
 name: build-tiles
 on:
   schedule:
-    - cron: "23 * * * *"      # hourly; run_cycle exits fast unless a new synoptic cycle exists
+    # Backstop only: tick.yml starts builds as HRRR cycles land. GitHub honoured
+    # the old hourly cron only ~4 times a day. run_cycle exits early if current.
+    - cron: "41 3,9,15,21 * * *"
   push:
     branches: [main]
     # Exercise pipeline-code changes immediately instead of waiting for the

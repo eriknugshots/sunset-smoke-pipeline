@@ -1,0 +1,61 @@
+name: tick
+# Keeps the smoke fresh without relying on GitHub's schedule, which fired
+# build-tiles.yml's "hourly" cron only ~4 times a day at uneven times
+# (2026-10-31..11-04) and let the published smoke age to 7-11 h. One tick
+# checks NOAA every 10 minutes for 5 hours (tick.py), starts a build once a new
+# cycle is fully uploaded, then starts the next tick (a workflow may dispatch
+# workflows with its own token). The schedule below only restarts the chain if
+# it ever breaks. Same pattern as skycast-icon-pipeline's tick.yml.
+on:
+  schedule:
+    - cron: "17 */4 * * *"
+  workflow_dispatch:
+permissions:
+  actions: write
+  contents: read
+concurrency:
+  group: tick
+  cancel-in-progress: false
+jobs:
+  tick:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: watch NOAA, build on a new cycle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PAGES_BASE="https://$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f1).github.io/$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f2)"
+          end=$(( $(date +%s) + 5 * 3600 ))
+          while [ "$(date +%s)" -lt "$end" ]; do
+            set +e
+            python tick.py --pages-base "$PAGES_BASE"
+            rc=$?
+            set -e
+            # A build already queued or running is building this cycle: don't
+            # queue a duplicate. A failed check counts as idle.
+            busy=0
+            if [ "$rc" = "0" ]; then
+              busy=$(gh run list --workflow build-tiles.yml --limit 20 --json status --jq '[.[] | select(.status != "completed")] | length' 2>/dev/null || echo 0)
+              case "$busy" in ''|*[!0-9]*) busy=0 ;; esac
+            fi
+            if [ "$rc" = "0" ] && [ "$busy" = "0" ]; then
+              gh workflow run build-tiles.yml --ref main
+              # A build takes ~20-45 min; don't ask again until it can be live.
+              sleep 2700
+            elif [ "$rc" = "0" ]; then
+              echo "a build is already queued or running — not starting another"
+              sleep 600
+            else
+              sleep 600
+            fi
+          done
+      - name: start the next tick
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run tick.yml --ref main
